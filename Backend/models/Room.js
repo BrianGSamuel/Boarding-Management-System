@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const roomSchema = new mongoose.Schema(
   {
     roomAddress: { type: String, required: true },
@@ -13,14 +12,12 @@ const roomSchema = new mongoose.Schema(
     images: [{ type: String, required: true }],
     customerId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }, // Reference to the customer who added the room
     isVerified: { type: Boolean, default: false }, // Admin verification
-
     isBooked: { type: Boolean, default: false },
     isBookedconfirm: { type: Boolean, default: false },
     buyerContactNumber: { type: String },
     buyerNIC: { type: String },
     buyingDate: { type: Date },
     buyingDuration: { type: Number },
-
     buyerName: { type: String },
     buyerCustomerId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 

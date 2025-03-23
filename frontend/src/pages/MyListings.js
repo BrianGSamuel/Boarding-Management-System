@@ -344,14 +344,14 @@ function LoggedCustomer() {
       <div className="room-details">
       
       {/* Main Image Carousel */}
-      <div id="roomImageCarousel" className="carousel slide" data-bs-ride="false">
+      <div id="roomImageCarousel" className="carousel-slide" data-bs-ride="false">
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <img
                   src={`http://localhost:8070${room.images[activeImageIndex]}`}
                   alt={`Room ${activeImageIndex + 1}`}
                   className="d-block w-100"
-                  style={{ maxWidth: '400px', maxHeight: '350px', margin: 'auto', borderRadius: '10px', marginTop: '10px'}} // Custom image size
+                  style={{ maxWidth: '300px', maxHeight: '250px',  borderRadius: '10px', marginTop: '10px', }} // Custom image size
                 />
               </div>
             </div>
@@ -366,7 +366,8 @@ function LoggedCustomer() {
                   alt={`Thumbnail ${index + 1}`}
                   className="img-thumbnail"
                   onClick={() => handleThumbnailClick(index)} // Set active image on thumbnail click
-                  
+                  style={{ maxWidth: '100px', maxHeight: '50px', gap:'10px', borderRadius: '10px', marginLeft:'125px' }} // Custom image size
+
                 />
               </div>
             ))}
