@@ -143,10 +143,12 @@ button {
 }
 
 
-.image-display{
-  padding-left: 150%;
-  margin-bottom: 20px;
-  
+.carousel-slide{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 300px;
+  margin-right: -200px;
 }
 
 

@@ -13,9 +13,6 @@ const app = express();
 
 const PORT = process.env.PORT || 8070; // Fallback to 8070 if PORT is not defined
 
-
-
-
 // Middleware
 app.use(cors());
 app.use(bodyParser.json()); // Parse JSON payloads
@@ -46,10 +43,8 @@ connection.once("open", () => {
 
 // Models
 const Room = require("./models/Room");
-const User = require("./models/Customer"); 
-const Admin = require("./models/Admin");
-const Message = require("./models/Message");
-
+const User = require("./models/User"); 
+const Admin = require("./models/Employee");
 
 
 // Multer setup for image uploads
@@ -199,10 +194,6 @@ app.use("/Customer", CustomerRouter);
 // Access Customer routes
 const roomRoutes = require("./Routes/roomRoute");
 app.use("/Room", roomRoutes); 
-
-// Access Customer routes
-const messageRoutes = require("./Routes/messageRoute");
-app.use("/Message", messageRoutes); 
 
 
 // Error handling for unhandled routes
