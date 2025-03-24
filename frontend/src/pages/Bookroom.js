@@ -264,37 +264,12 @@ function BookRoomPage() {
             disabled={!agreeToTerms}
             onClick={handleConfirmBooking}
           >
-            Confirm Booking
+           Add to favourites
           </button>
         </div>
       </div>
     </div>
    
-     {/* Floating Chat Button */}
-     <div className="chat-icon" onClick={toggleChat}>
-        <FaCommentDots size={24} />
-      </div>
-
-      {/* Chat Box */}
-      {isChatOpen && (
-        <div className="chat-box">
-          <div className="chat-header">Message</div>
-          <div className="chat-body">
-            {chatHistory.map((msg, index) => (
-              <div key={index} className="chat-message">{msg}</div>
-            ))}
-          </div>
-          <div className="chat-footer">
-            <input
-              type="text"
-              placeholder="Type a message..."
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            />
-            <button onClick={handleSendMessage}>Send</button>
-          </div>
-        </div>
-      )}
     </>
   );
 }

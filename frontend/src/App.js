@@ -20,6 +20,8 @@ import AdminLogin from './pages/AdminLogin.js';
 import AdminRegister from './pages/AdminRegister.js';
 import Admindashboard from './pages/Admindashboard.js';
 import Properties from './pages/Propertieshomepage.js';
+import Message from './pages/Chat.js';
+
 
 
 function App() {
@@ -33,7 +35,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/update-customer/:id" element={<UpdateCustomer />} /> 
-          <Route path="/Properties" element={<Properties />} />          <Route path="/Profile" element={<Profilepage />} /> 
+          <Route path="/Properties" element={<Properties />} />       
+          <Route path="/Profile" element={<Profilepage />} /> 
           <Route path='/AddRoom' element={<AddRoom />} />
           <Route path='/RoomList' element={<RoomList />} />
           <Route path='/Bookroom' element={<Bookroom />} />
@@ -45,7 +48,7 @@ function App() {
           <Route path="/AdminLogin" element={<AdminLogin />} />
           <Route path="/AdminRegister" element={<AdminRegister />} />
           <Route path="/Admindash" element={<Admindashboard />} />
-          
+          <Route path="/chatpage" element={<Message />} />
           
         </Routes>
       </div>

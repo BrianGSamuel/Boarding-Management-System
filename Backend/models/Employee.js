@@ -11,7 +11,7 @@ const EmployeeSchema = new Schema({
 
     password: {type: String,required: true,minlength: 6, },
 
-    role: {type: String,enum: ['Boarding_Manager', 'Customer_Care_Manager', 'Service_Agent'],required: true, 
+    role: {type: String,enum: ['Boarding_Manager', 'Customer_Care_Manager', 'Service_Agent'],required: false, 
     },
 
     createdAt: {type: Date,default: Date.now,},
