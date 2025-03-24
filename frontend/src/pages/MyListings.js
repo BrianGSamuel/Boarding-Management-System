@@ -264,6 +264,11 @@ function LoggedCustomer() {
     navigate("/login", { replace: true });
   };
 
+  // Navigate to messaging page with room details
+const handleGoToMessaging = (roomId) => {
+  navigate("/chatpage", { state: { roomId } });
+};
+
   return (
     <>
     < nav className="body">
@@ -447,6 +452,14 @@ function LoggedCustomer() {
                 disabled={room.isBookedconfirm} // Disable if already confirmed
               >
                 {room.isBookedconfirm ? "Booking Confirmed" : "Confirm Booking"}
+              </button>
+
+              {/* Messaging Button */}
+              <button
+                className="btn btn-info mt-3"
+                onClick={() => handleGoToMessaging(room._id)}
+              >
+              Go to Messaging
               </button>
             </>
           )}

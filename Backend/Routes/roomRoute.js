@@ -14,6 +14,9 @@ const {
   buyerRating,
   repostRoom,
   verifyBookingconfirm,
+  sendMessage,
+  getChatHistory
+  
   
 } = require("../controllers/roomController");
 
@@ -37,6 +40,10 @@ router.post("/book", auth, bookRoom); // Customers can book a room (No need for 
 router.put("/repost/:roomId", auth, repostRoom);
 router.get("/owner/bookings", auth, getOwnerBookings); // Owners fetch bookings of their rooms
 router.put("/confirmbooking/:id", auth, verifyBookingconfirm); // Owners fetch bookings of their rooms
+
+
+router.post("/sendmessage", sendMessage,);
+router.get("/chatHistory", auth, getChatHistory,);
 
 
 // Admin Routes (Verification)

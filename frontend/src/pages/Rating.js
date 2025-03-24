@@ -200,6 +200,11 @@ function LoggedCustomer() {
     doc.save(`Room_${room.roomType}_Booking_Receipt.pdf`);
 };
 
+// Navigate to messaging page with room details
+const handleGoToMessaging = (roomId, buyerName) => {
+  navigate("/chatpage", { state: { roomId, buyerName } });
+};
+
 
   return (
     <>
@@ -352,17 +357,25 @@ function LoggedCustomer() {
                             </button>
                           </div>
                         )}
-                        <h6 className="dowloadtext" >Download Rental Confirmation</h6>
+                        <h6 className="dowloadtext" >Download the Rental Confirmation from here</h6>
 
+
+                    {/* Messaging Button */}
+                    <button
+                      className="btn btn-info mt-3"
+                      onClick={() => handleGoToMessaging(room._id, room.buyerName)}
+                    >
+                      Go to Messaging
+                    </button>
 
                     {/* Display Rating History */}
                     <div className="mt-3">
-                      <h5> Rating History </h5>
+                      <h5><strong>Rating History</strong> </h5>
                       {room.ratingHistory && room.ratingHistory.length > 0 ? (
                         room.ratingHistory.map((rating, index) => (
                           <div key={index}>
                             <div>
-                              <strong>Buyer Name:</strong> {rating.buyerName}
+                              
                               <div>
                                 <strong>Rating:</strong>
                                 {/* Display 5 stars, highlighting the rated number in yellow */}

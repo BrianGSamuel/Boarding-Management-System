@@ -20,7 +20,8 @@ import AdminLogin from './pages/AdminLogin.js';
 import AdminRegister from './pages/AdminRegister.js';
 import Admindashboard from './pages/Admindashboard.js';
 import Properties from './pages/Propertieshomepage.js';
-import Message from './pages/Message.js';
+import Message from './pages/Chat.js';
+
 
 
 function App() {

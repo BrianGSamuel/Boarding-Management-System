@@ -166,6 +166,40 @@ const verifyRoom = async (req, res) => {
   }
 };
 
+
+const sendMessage = async (req, res) => {
+  try {
+    const { roomId, message } = req.body;
+
+    // Check if roomId and message are provided
+    if (!roomId || !message) {
+      return res.status(400).json({ error: "Room ID and message are required." });
+    }
+
+    const room = await Room.findById(roomId);
+    if (!room) {
+      return res.status(404).json({ error: "Room not found" });
+    }
+
+    // Add the message to the chatHistory array
+    room.chatHistory.push({
+      message,
+      timestamp: new Date(),
+    });
+
+    // Save the updated room document
+    await room.save();
+
+    res.json({ message: "Message added to chat history successfully!", room });
+  } catch (err) {
+    console.error("Error adding message:", err);
+    res.status(500).json({ error: "An error occurred while adding the message." });
+  }
+};
+
+
+
+
 // Book a room
 const bookRoom = async (req, res) => {
   try {
@@ -310,6 +344,35 @@ const buyerRating = async (req, res) => {
   }
 };
 
+// Fetch chat history of the logged-in customer
+const getChatHistory = async (req, res) => {
+  try {
+    // Find rooms where the logged-in user is either the buyer or the owner (customerId)
+    const rooms = await Room.find({
+      $or: [
+        { buyerCustomerId: req.userId },
+        { customerId: req.userId }
+      ]
+    });
+
+    // Extract the chat history from the rooms
+    const chatHistory = rooms.map(room => {
+      return {
+        roomId: room._id,
+        chatHistory: room.chatHistory // All chat messages in this room
+      };
+    });
+
+    // Filter out rooms with no chat history
+    const filteredChatHistory = chatHistory.filter(room => room.chatHistory.length > 0);
+
+    // Respond with the filtered chat history or a message if none is found
+    res.json(filteredChatHistory.length ? filteredChatHistory : { message: "No chat history found for this customer" });
+  } catch (err) {
+    console.error("Error fetching chat history:", err);
+    res.status(500).json({ error: "An error occurred while retrieving chat history" });
+  }
+};
 
 
 
@@ -328,5 +391,8 @@ module.exports = {
   buyerRating,
   repostRoom,
   verifyBookingconfirm,
+  sendMessage, 
+  getChatHistory
+
   
 };
