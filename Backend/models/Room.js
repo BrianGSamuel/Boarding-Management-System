@@ -35,6 +35,8 @@ const roomSchema = new mongoose.Schema(
     // Modified chat system between customer and buyerCustomer
     chatHistory: [
       {
+        ownerName: { type: String, required: true },
+        buyerName: { type: String },
         message: { type: String, required: true },
         createdAt: { type: Date, default: Date.now },
       },
