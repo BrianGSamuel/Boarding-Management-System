@@ -147,11 +147,32 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 75%;
+  margin-right: 0px;
+}
+
+.ratingbtn{
+  margin-left: 100px;
+  max-height: 50px;
+}
+
+.image{
+  margin-left: 200px;
+  margin-bottom: 20px;
+}
+
+.imagethumbnail{
+  margin-left: 400px;
+}
+.imagethumbnail2{
   margin-left: 300px;
-  margin-right: -200px;
 }
 
 
+
+.dowloadtext{
+ color: red;
+}
 /* Responsive styles */
 @media (max-width: 768px) {
   .LoggedCustomer-container {

@@ -14,7 +14,6 @@ function LoggedCustomer() {
   const [message, setMessage] = useState("");
   const [alertType, setAlertType] = useState("");
   const [activeImageIndex, setActiveImageIndex] = useState(0); // Track active image index for carousel
-  
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [selectedBuyer, setSelectedBuyer] = useState(null);
    const [unconfirmedBooking, setunconfirmedBooking] = useState([]);
@@ -185,6 +184,7 @@ function LoggedCustomer() {
     setUpdatedRoomData({
       roomType: room.roomType,
       roomAddress: room.roomAddress,
+      roomCity: room. roomCity,
       price: room.price,
       description: room.description,
       images: room.images, // Keep track of existing images
@@ -344,21 +344,21 @@ function LoggedCustomer() {
       <div className="room-details">
       
       {/* Main Image Carousel */}
-      <div id="roomImageCarousel" className="carousel-slide" data-bs-ride="false">
-            <div className="carousel-inner">
-              <div className="carousel-item active">
-                <img
-                  src={`http://localhost:8070${room.images[activeImageIndex]}`}
-                  alt={`Room ${activeImageIndex + 1}`}
-                  className="d-block w-100"
-                  style={{ maxWidth: '300px', maxHeight: '250px',  borderRadius: '10px', marginTop: '10px', }} // Custom image size
-                />
-              </div>
+      <div id="roomImageCarousel" className="carousel-slide mt-3" data-bs-ride="false">
+      <div className="image3">
+          <div className="carousel-item active">
+            <img
+            src={`http://localhost:8070${room.images[activeImageIndex]}`}
+            alt={`Room ${activeImageIndex + 1}`}
+            className="d-block"
+            style={{ width: '500px', height: '300px', objectFit: 'cover', borderRadius: '10px' }}
+            />
             </div>
+          </div>
           </div>
 
           {/* Thumbnails */}
-          <div className="row mt-3 justify-content-center">
+          <div className="imagethumbnail2  mt-3 gap-2">
             {room.images.map((image, index) => (
               <div key={index} className="col-1">
                 <img
@@ -406,12 +406,13 @@ function LoggedCustomer() {
         </p>
         <div className="d-flex justify-content-start mt-2">
         <button 
-            className="btn  me-1" 
-            onClick={() => handleRoomUpdate(room)}
-            title="Edit Room"
-          >
-            <Pencil size={20} /> {/* Edit Icon */}
-          </button>
+          className="btn me-1" 
+          onClick={() => handleRoomUpdate(room)}
+          title="Edit Room"
+          disabled={room.isVerified} // Disable button when isBookedconfirm is true
+        >
+          <Pencil size={20} /> {/* Edit Icon */}
+        </button>
 
 
           <button 
