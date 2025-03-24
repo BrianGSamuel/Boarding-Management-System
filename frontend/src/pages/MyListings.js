@@ -339,7 +339,7 @@ const handleGoToMessaging = (roomId) => {
         </div>
       </nav>
 
-      <div className="Listing-container d-flex flex-wrap justify-content-center p-3">
+      <div className="Listing-container d-flex justify-content-center p-3">
         <div className="my-rooms-container w-55 p-3">
           <h2>My Listings</h2>
           {rooms.length > 0 ? (
@@ -348,22 +348,22 @@ const handleGoToMessaging = (roomId) => {
               
       <div className="room-details">
       
-      {/* Main Image Carousel */}
-      <div id="roomImageCarousel" className="carousel-slide mt-3" data-bs-ride="false">
-      <div className="image3">
-          <div className="carousel-item active">
-            <img
-            src={`http://localhost:8070${room.images[activeImageIndex]}`}
-            alt={`Room ${activeImageIndex + 1}`}
-            className="d-block"
-            style={{ width: '500px', height: '300px', objectFit: 'cover', borderRadius: '10px' }}
-            />
+       {/* Main Image Carousel */}
+       <div id="roomImageCarousel" className="carousel slide" data-bs-ride="false">
+            <div className="carousel-inner">
+              <div className="carousel-item active">
+                <img
+                  src={`http://localhost:8070${room.images[activeImageIndex]}`}
+                  alt={`Room ${activeImageIndex + 1}`}
+                  className="d-block w-100"
+                  style={{ maxWidth: '500px', maxHeight: '300px', margin: 'auto', borderRadius: '10px', marginTop: '10px'}} // Custom image size
+                />
+              </div>
             </div>
-          </div>
           </div>
 
           {/* Thumbnails */}
-          <div className="imagethumbnail2  mt-3 gap-2">
+          <div className="row mt-2 justify-content-center">
             {room.images.map((image, index) => (
               <div key={index} className="col-1">
                 <img
@@ -371,8 +371,7 @@ const handleGoToMessaging = (roomId) => {
                   alt={`Thumbnail ${index + 1}`}
                   className="img-thumbnail"
                   onClick={() => handleThumbnailClick(index)} // Set active image on thumbnail click
-                  style={{ maxWidth: '100px', maxHeight: '50px', gap:'10px', borderRadius: '10px', marginLeft:'125px' }} // Custom image size
-
+                  
                 />
               </div>
             ))}
@@ -455,12 +454,18 @@ const handleGoToMessaging = (roomId) => {
               </button>
 
               {/* Messaging Button */}
-              <button
-                className="btn btn-info mt-3"
-                onClick={() => handleGoToMessaging(room._id)}
-              >
-              Go to Messaging
-              </button>
+            <button
+              className="btn btn-info mt-3 position-relative"
+              onClick={() => handleGoToMessaging(room._id, room.buyerName)}
+            >
+              Messages
+              {room.chatHistory && room.chatHistory.length > 0 && (
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                 !
+                </span>
+              )}
+            </button>
+
             </>
           )}
         </div>

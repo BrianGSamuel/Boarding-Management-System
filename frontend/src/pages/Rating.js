@@ -201,8 +201,8 @@ function LoggedCustomer() {
 };
 
 // Navigate to messaging page with room details
-const handleGoToMessaging = (roomId, buyerName) => {
-  navigate("/chatpage", { state: { roomId, buyerName } });
+const handleGoToMessaging = (roomId,) => {
+  navigate("/chatpage", { state: { roomId} });
 };
 
 
@@ -339,7 +339,6 @@ const handleGoToMessaging = (roomId, buyerName) => {
                     <p><strong>Owner Name</strong> {room.ownerName}</p>
                     <p><strong>Owner Contact Number</strong> {room.ownerContactNumber}</p>
                     <p className="room-price"><strong>Price</strong> Rs {room.price.toLocaleString()} / month</p>
-                    <p><strong>Description</strong> {room.description}</p>
                     <p><strong>Address</strong> {room.roomAddress}</p>
                     <p><strong>Booked Date</strong> {room.createdAt}</p>
                     <p><strong>Duration</strong> {room.buyingDuration} Months</p>
@@ -362,10 +361,15 @@ const handleGoToMessaging = (roomId, buyerName) => {
 
                     {/* Messaging Button */}
                     <button
-                      className="btn btn-info mt-3"
+                      className="btn btn-info mt-3 position-relative"
                       onClick={() => handleGoToMessaging(room._id, room.buyerName)}
                     >
-                      Go to Messaging
+                      Messages
+                      {room.chatHistory && room.chatHistory.length > 0 && (
+                        <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        !
+                        </span>
+                      )}
                     </button>
 
                     {/* Display Rating History */}
