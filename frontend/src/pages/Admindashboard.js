@@ -7,7 +7,6 @@ import { useLocation } from "react-router-dom";
 function AdminDashboard() {
   const location = useLocation();
   const message1 = location.state?.message || "";
-
   const [activeSection, setActiveSection] = useState(null);
   const [unverifiedRooms, setUnverifiedRooms] = useState([]);
   const [verifiedRooms, setVerifiedRooms] = useState([]);
@@ -178,7 +177,7 @@ axios.get("http://localhost:3000/admin/dashboard", {
                                   ))}
                                 </div>
                                 
-                                <p><strong>Room Added On:</strong> {room.createdAt || "N/A"}</p>
+                                <p><strong>Posted On</strong> - {new Date(room.createdAt).toLocaleString()}</p>
                                 <p><strong>Owner Name:</strong> {room.ownerName || "N/A"}</p>
                                 <p><strong>Owner Contact:</strong> {room.ownerContactNumber || "N/A"}</p>
                                 <p><strong>Located City:</strong> {room.roomCity|| "N/A"}</p>
