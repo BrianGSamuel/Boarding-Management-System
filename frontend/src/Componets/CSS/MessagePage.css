@@ -19,12 +19,12 @@
   
   .message-bubble {
     max-width: 70%;
-    margin-left: auto;
-    margin-right: 10px;
+    margin-left: 15%;
+    margin-right: 15%;
   }
   
   .message-content {
-    background-color: #007bff;
+    background-color: #00725e;
     color: white;
     border-radius: 15px;
     word-wrap: break-word;
