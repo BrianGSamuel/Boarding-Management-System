@@ -246,10 +246,6 @@ app.use("/Customer", CustomerRouter);
 const roomRoutes = require("./Routes/roomRoute");
 app.use("/Room", roomRoutes); 
 
-// Access Customer routes
-const messageRoutes = require("./Routes/messageRoute");
-app.use("/Message", messageRoutes); 
-
 const serviceProviderRoutes = require("./Routes/serviceProviderRoutes");
 app.use("/serviceProvider", serviceProviderRoutes);
 
