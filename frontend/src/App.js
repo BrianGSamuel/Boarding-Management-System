@@ -21,8 +21,7 @@ import AdminRegister from './pages/AdminRegister.js';
 import Admindashboard from './pages/Admindashboard.js';
 import Properties from './pages/Propertieshomepage.js';
 import Message from './pages/Chat.js';
-
-
+import Ticket from './pages/Ticket.js';
 
 function App() {
   return (
@@ -49,6 +48,7 @@ function App() {
           <Route path="/AdminRegister" element={<AdminRegister />} />
           <Route path="/Admindash" element={<Admindashboard />} />
           <Route path="/chatpage" element={<Message />} />
+          <Route path="/ticket" element={<Ticket/>} />
           
         </Routes>
       </div>

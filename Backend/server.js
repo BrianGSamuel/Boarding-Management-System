@@ -44,8 +44,8 @@ connection.once("open", () => {
 // Models
 const Room = require("./models/Room");
 const User = require("./models/User"); 
-const Admin = require("./models/Employee");
-
+const Admin = require("./models/Employee"); 
+const Ticket = require("./models/Ticket");
 
 // Multer setup for image uploads
 const storage = multer.diskStorage({
@@ -194,6 +194,10 @@ app.use("/Customer", CustomerRouter);
 // Access Customer routes
 const roomRoutes = require("./Routes/roomRoute");
 app.use("/Room", roomRoutes); 
+
+//Access Ticket routes
+const ticketRoute = require("./Routes/ticketRoute")
+app.use("/Ticket" , ticketRoute);
 
 
 // Error handling for unhandled routes
