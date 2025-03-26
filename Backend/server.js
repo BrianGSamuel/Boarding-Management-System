@@ -49,6 +49,7 @@ const Room = require("./models/Room");
 const User = require("./models/Customer"); 
 const Admin = require("./models/Admin");
 const Message = require("./models/Message");
+const serviceProvider = require("./models/serviceProvider");
 
 
 
@@ -204,6 +205,9 @@ app.use("/Room", roomRoutes);
 const messageRoutes = require("./Routes/messageRoute");
 app.use("/Message", messageRoutes); 
 
+const serviceProviderRoutes = require("./Routes/serviceProviderRoutes");
+app.use("/serviceProvider", serviceProviderRoutes);
+
 
 // Error handling for unhandled routes
 app.use((req, res) => {
@@ -220,3 +224,8 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server is up and running on port number: ${PORT}`);
 });
+
+
+
+
+
