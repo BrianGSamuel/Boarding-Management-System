@@ -202,8 +202,8 @@ function LoggedCustomer() {
 };
 
 // Navigate to messaging page with room details
-const handleGoToMessaging = (roomId,) => {
-  navigate("/chatpage", { state: { roomId} });
+const handleGoToMessaging = (roomId, buyerName) => {
+  navigate("/chatpage", { state: { roomId, buyerName} });
 };
 
 

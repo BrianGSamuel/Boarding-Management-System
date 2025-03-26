@@ -186,6 +186,9 @@ function HomePage() {
             </button>
             <div className="collapse navbar-collapse" id="navbarContent">
             <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+                <a className="nav-link" href="/ticket">Ticket</a>
+              </li>
               <li className="nav-item">
                 <a className="nav-link" href="/AddRoom">Post Add</a>
               </li>
