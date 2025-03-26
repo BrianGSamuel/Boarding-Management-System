@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Add this line
 import "../Componets/CSS/Profile.css";
-import { Pencil, Trash2, Eye, RefreshCcw } from "lucide-react";
+import { Pencil, Trash2, Eye, RefreshCcw, Download } from "lucide-react";
 import logo from "../Componets/assets/unistaylogo.png";
+import jsPDF from "jspdf"; // Import jsPDF
 
 function LoggedCustomer() {
  
@@ -14,7 +15,6 @@ function LoggedCustomer() {
   const [message, setMessage] = useState("");
   const [alertType, setAlertType] = useState("");
   const [activeImageIndex, setActiveImageIndex] = useState(0); // Track active image index for carousel
-  
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [selectedBuyer, setSelectedBuyer] = useState(null);
    const [unconfirmedBooking, setunconfirmedBooking] = useState([]);
@@ -185,6 +185,7 @@ function LoggedCustomer() {
     setUpdatedRoomData({
       roomType: room.roomType,
       roomAddress: room.roomAddress,
+      roomCity: room. roomCity,
       price: room.price,
       description: room.description,
       images: room.images, // Keep track of existing images
@@ -264,6 +265,103 @@ function LoggedCustomer() {
     navigate("/login", { replace: true });
   };
 
+  // Navigate to messaging page with room details
+const handleGoToMessaging = (roomId, ownerName) => {
+  navigate("/chatpage", { state: { roomId, ownerName } });
+};
+
+const generatePDF = (room) => {
+    const doc = new jsPDF();
+    
+    // Add Title (with background color and bold text)
+    doc.setFillColor(6, 57, 112); // Set background color for title
+    doc.rect(0, 0, 210, 20, 'F'); // Create a filled rectangle for title background
+    doc.setTextColor(255, 255, 255); // Set text color (white)
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(18);
+    
+    doc.text("Unistay - Rental Confirmation", 20, 15);
+    
+    // Add a thank you message for the buyer and staff (Text color: Dark Blue)
+    doc.setTextColor(0, 0, 139); // Dark blue color for the message
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(12);
+   
+    doc.text("Thank you for choosing Unistay!", 20, 30);
+    doc.text("Your room details are as follows:", 20, 40);
+  
+    // Add "Room Owner Details" topic
+    doc.setTextColor(0, 0, 0); // Black color for text
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.text("Room Details", 20, 50);
+    
+    // Draw the room owner details
+    const margin = 20;
+    const margin2 = 15;
+    const detailsWidth = 90; // Width for room and owner details
+    const detailsWidth2 = 75; // Width for room and owner details
+    const formattedDate = new Date(room.createdAt).toLocaleString(); // Convert to readable format
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10); // Reduced font size for better fit
+    
+    doc.text(`Owner Name: ${room.ownerName}`, margin2 + 5, 60); 
+    doc.text(`Owner Contact: ${room.ownerContactNumber}`, margin2 + 5, 70);
+    doc.text(`Posted On: ${formattedDate}`, margin2 + 5, 80);
+    doc.text(`Room Type: ${room.roomType}`, margin2 +  5, 90);
+    doc.text(`Room City: ${room.roomCity}`, margin2 +  5, 100);
+    doc.text(`Price: Rs ${room.price.toLocaleString()} / month`, margin2 +  5, 110);
+    doc.text(`Room Address: ${room.roomAddress}`, margin2 + 5,120);
+    
+    // Add a space between sections
+    doc.text("", margin, 85);
+    
+    // Add "Room Details" topic (above room details section)
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.text("Tenant Details", margin + detailsWidth2 + 20, 50);
+    
+    // Draw the room details
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10); // Reduced font size for better fit
+    
+    doc.text(`Tenant ID: ${room.buyerCustomerId}`, margin + detailsWidth + 5, 60);
+    doc.text(`Tenant Name: ${room.buyerName}`, margin + detailsWidth + 5, 70);
+    doc.text(`Tenant NIC: ${room.buyerNIC}`, margin + detailsWidth + 5, 80);
+    doc.text(`Tenant Contact Number: ${room.buyerContactNumber}`, margin + detailsWidth + 5, 90);
+    doc.text(`Rented Date: ${room.buyingDate}`, margin + detailsWidth + 5, 100);
+    doc.text(`Rental Period: ${room.buyingDuration} Months`, margin + detailsWidth + 5, 110);
+    
+    // Add another horizontal line to separate sections
+    doc.setDrawColor(0, 0, 0); // Black line
+    doc.setLineWidth(0.5);
+    doc.line(margin, 130, 190, 130); // Line after the details
+    
+    // Add Thank You message at the end (Green color)
+    doc.setTextColor(34, 139, 34); // Green color for the final message
+    doc.text("We hope to serve you again!", 20, 135);
+    doc.text("Please consider adding a rating for the room. Your feedback helps the owner in future postings!", 20, 140);
+    
+    
+    // Add contact details and ticket system information
+    doc.setTextColor(0, 0, 0); // Black color for text
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    doc.text("For any issues or inquiries, please use our built-in ticket system on the Unistay website.", 20, 150);
+    doc.text("You can also reach out to our support team:", 20, 155);
+    doc.text("Hotline: +077 222 3388", 20, 160);
+    doc.text("Email: support@unistay.com", 20, 165);
+    
+    // Add rating suggestion line
+    doc.setFont("helvetica", "italic");
+    doc.setFontSize(10);
+    
+    // Save the generated PDF
+    doc.save(`Room_${room.roomType}_Booking_Receipt.pdf`);
+};
+
+
+
   return (
     <>
     < nav className="body">
@@ -334,7 +432,7 @@ function LoggedCustomer() {
         </div>
       </nav>
 
-      <div className="Listing-container d-flex flex-wrap justify-content-center p-3">
+      <div className="Listing-container d-flex justify-content-center p-3">
         <div className="my-rooms-container w-55 p-3">
           <h2>My Listings</h2>
           {rooms.length > 0 ? (
@@ -343,22 +441,22 @@ function LoggedCustomer() {
               
       <div className="room-details">
       
-      {/* Main Image Carousel */}
-      <div id="roomImageCarousel" className="carousel slide" data-bs-ride="false">
+       {/* Main Image Carousel */}
+       <div id="roomImageCarousel" className="carousel slide" data-bs-ride="false">
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <img
                   src={`http://localhost:8070${room.images[activeImageIndex]}`}
                   alt={`Room ${activeImageIndex + 1}`}
                   className="d-block w-100"
-                  style={{ maxWidth: '400px', maxHeight: '350px', margin: 'auto', borderRadius: '10px', marginTop: '10px'}} // Custom image size
+                  style={{ maxWidth: '500px', maxHeight: '300px', margin: 'auto', borderRadius: '10px', marginTop: '10px'}} // Custom image size
                 />
               </div>
             </div>
           </div>
 
           {/* Thumbnails */}
-          <div className="row mt-3 justify-content-center">
+          <div className="row mt-2 justify-content-center">
             {room.images.map((image, index) => (
               <div key={index} className="col-1">
                 <img
@@ -372,7 +470,7 @@ function LoggedCustomer() {
             ))}
           </div>
         <h3><strong>{room.roomType}</strong> - {room.roomCity}</h3>
-        <p><strong>Posted On</strong>- {room.createdAt}</p>
+        <p><strong>Posted On</strong> - {new Date(room.createdAt).toLocaleString()}</p>
         <p className="room-price"><strong>Price</strong> Rs {room.price.toLocaleString()} / month</p>
         <p><strong>Description </strong>{room.description}</p>
         <p><strong>Address </strong>{room.roomAddress}</p>
@@ -405,12 +503,13 @@ function LoggedCustomer() {
         </p>
         <div className="d-flex justify-content-start mt-2">
         <button 
-            className="btn  me-1" 
-            onClick={() => handleRoomUpdate(room)}
-            title="Edit Room"
-          >
-            <Pencil size={20} /> {/* Edit Icon */}
-          </button>
+          className="btn me-1" 
+          onClick={() => handleRoomUpdate(room)}
+          title="Edit Room"
+          disabled={room.isVerified} // Disable button when isBookedconfirm is true
+        >
+          <Pencil size={20} /> {/* Edit Icon */}
+        </button>
 
 
           <button 
@@ -446,9 +545,35 @@ function LoggedCustomer() {
               >
                 {room.isBookedconfirm ? "Booking Confirmed" : "Confirm Booking"}
               </button>
+
+              {/* Messaging Button */}
+            <button
+              className="btn btn-info mt-3 position-relative"
+              onClick={() => handleGoToMessaging(room._id, room.buyerName)}
+            >
+              Messages
+              {room.chatHistory && room.chatHistory.length > 0 && (
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                 !
+                </span>
+              )}
+            </button>
+
+            
             </>
           )}
         </div>
+          {/* New PDF download button */}
+          {room.isBookedconfirm && (
+                <div className="mt-2 w-50">
+                  <button className="btn  me-1" onClick={() => generatePDF(room)} title="Edit Room">
+                    <Download size={25} /> {/* download Icon */}
+                  </button>
+                </div>
+              )}
+            <h6 className="dowloadtext" >Download the Rental Confirmation from here</h6>
+
+  
 
 
         {/* Display Rating History */}

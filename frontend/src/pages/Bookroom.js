@@ -171,7 +171,7 @@ function BookRoomPage() {
 
           {/* Card Body Content */}
           <h5 className="card-title"><strong> Price </strong> Rs. {room.price.toLocaleString()}/ month</h5>
-          <p className="card-text"><strong>Room Added On:</strong>{room.createdAt}</p>
+          <p><strong>Published On</strong> - {new Date(room.createdAt).toLocaleString()}</p>
           <p className="card-text"><strong>Description:</strong>{room.description}</p>
           <p className="card-text"><strong>Owner:</strong> {room.ownerName} </p>
           <p className="card-text"><strong>Negotiable:</strong> {room.isNegotiable ? "Yes" : "No"}</p>
@@ -264,37 +264,12 @@ function BookRoomPage() {
             disabled={!agreeToTerms}
             onClick={handleConfirmBooking}
           >
-            Confirm Booking
+           Add to favourites
           </button>
         </div>
       </div>
     </div>
    
-     {/* Floating Chat Button */}
-     <div className="chat-icon" onClick={toggleChat}>
-        <FaCommentDots size={24} />
-      </div>
-
-      {/* Chat Box */}
-      {isChatOpen && (
-        <div className="chat-box">
-          <div className="chat-header">Message</div>
-          <div className="chat-body">
-            {chatHistory.map((msg, index) => (
-              <div key={index} className="chat-message">{msg}</div>
-            ))}
-          </div>
-          <div className="chat-footer">
-            <input
-              type="text"
-              placeholder="Type a message..."
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            />
-            <button onClick={handleSendMessage}>Send</button>
-          </div>
-        </div>
-      )}
     </>
   );
 }
