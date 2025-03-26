@@ -172,7 +172,7 @@ const sendMessage = async (req, res) => {
     const { roomId, message } = req.body;
 
     // Check if roomId and message are provided
-    if (!roomId || !message) {
+    if ( !roomId || !message) {
       return res.status(400).json({ error: "Room ID and message are required." });
     }
 
@@ -183,6 +183,7 @@ const sendMessage = async (req, res) => {
 
     // Add the message to the chatHistory array
     room.chatHistory.push({
+     
       message,
       timestamp: new Date(),
     });

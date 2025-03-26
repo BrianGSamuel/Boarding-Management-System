@@ -169,8 +169,9 @@ function LoggedCustomer() {
     doc.text(`Tenant ID: ${room.buyerCustomerId}`, margin + detailsWidth + 5, 60);
     doc.text(`Tenant Name: ${room.buyerName}`, margin + detailsWidth + 5, 70);
     doc.text(`Tenant NIC: ${room.buyerNIC}`, margin + detailsWidth + 5, 80);
-    doc.text(`Rented Date: ${room.buyingDate}`, margin + detailsWidth + 5, 90);
-    doc.text(`Rental Period: ${room.buyingDuration} Months`, margin + detailsWidth + 5, 100);
+    doc.text(`Tenant Contact Number: ${room.buyerContactNumber}`, margin + detailsWidth + 5, 90);
+    doc.text(`Rented Date: ${room.buyingDate}`, margin + detailsWidth + 5, 100);
+    doc.text(`Rental Period: ${room.buyingDuration} Months`, margin + detailsWidth + 5, 110);
     
     // Add another horizontal line to separate sections
     doc.setDrawColor(0, 0, 0); // Black line
@@ -202,7 +203,7 @@ function LoggedCustomer() {
 
 // Navigate to messaging page with room details
 const handleGoToMessaging = (roomId, buyerName) => {
-  navigate("/chatpage", { state: { roomId, buyerName } });
+  navigate("/chatpage", { state: { roomId, buyerName} });
 };
 
 
@@ -335,11 +336,10 @@ const handleGoToMessaging = (roomId, buyerName) => {
 
 
                     <h3><strong>{room.roomType}</strong> - {room.roomCity}</h3>
-                    <p><strong>Posted On</strong>- {room.createdAt}</p>
+                    <p><strong>Posted On</strong> - {new Date(room.createdAt).toLocaleString()}</p>
                     <p><strong>Owner Name</strong> {room.ownerName}</p>
                     <p><strong>Owner Contact Number</strong> {room.ownerContactNumber}</p>
                     <p className="room-price"><strong>Price</strong> Rs {room.price.toLocaleString()} / month</p>
-                    <p><strong>Description</strong> {room.description}</p>
                     <p><strong>Address</strong> {room.roomAddress}</p>
                     <p><strong>Booked Date</strong> {room.createdAt}</p>
                     <p><strong>Duration</strong> {room.buyingDuration} Months</p>
@@ -362,10 +362,15 @@ const handleGoToMessaging = (roomId, buyerName) => {
 
                     {/* Messaging Button */}
                     <button
-                      className="btn btn-info mt-3"
+                      className="btn btn-info mt-3 position-relative"
                       onClick={() => handleGoToMessaging(room._id, room.buyerName)}
                     >
-                      Go to Messaging
+                      Messages
+                      {room.chatHistory && room.chatHistory.length > 0 && (
+                        <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        !
+                        </span>
+                      )}
                     </button>
 
                     {/* Display Rating History */}
