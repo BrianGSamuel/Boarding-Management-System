@@ -42,10 +42,14 @@ connection.once("open", () => {
   console.log("MongoDB is connected and ready!");
 });
 
+
 // Models
 const Room = require("./models/Room");
 const User = require("./models/User"); 
 const Admin = require("./models/Employee");
+const serviceProvider = require("./models/serviceProvider");
+
+
 
 
 // Multer setup for image uploads
@@ -242,6 +246,14 @@ app.use("/Customer", CustomerRouter);
 const roomRoutes = require("./Routes/roomRoute");
 app.use("/Room", roomRoutes); 
 
+// Access Customer routes
+const messageRoutes = require("./Routes/messageRoute");
+app.use("/Message", messageRoutes); 
+
+const serviceProviderRoutes = require("./Routes/serviceProviderRoutes");
+app.use("/serviceProvider", serviceProviderRoutes);
+
+
 
 // Error handling for unhandled routes
 app.use((req, res) => {
@@ -258,3 +270,8 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server is up and running on port number: ${PORT}`);
 });
+
+
+
+
+

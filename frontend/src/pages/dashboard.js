@@ -193,7 +193,7 @@ function HomePage() {
                 <a className="nav-link" href="/RoomList">Properties</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">About Us</a>
+                <a className="nav-link" href="/register-service-provider">Service Provider</a>
               </li>
                
 
