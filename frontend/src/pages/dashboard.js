@@ -192,9 +192,7 @@ function HomePage() {
               <li className="nav-item">
                 <a className="nav-link" href="/RoomList">Properties</a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/register-service-provider">Service Provider</a>
-              </li>
+              
                
 
               {/* Dropdown Menu */}
@@ -213,7 +211,7 @@ function HomePage() {
                   <li><a className="dropdown-item" href="/profile">View Profile</a></li>
                   <li><a className="dropdown-item" href="/MyRoom">My Room</a></li>
                   <li><a className="dropdown-item" href="/MyListings">My Listings</a></li>
-                  <li><a className="dropdown-item" href="/MyListings">Rate Us</a></li>
+                  <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
                   <li><hr className="dropdown-divider" /></li>
                   <li>
                   {sessionStorage.getItem("token") && (

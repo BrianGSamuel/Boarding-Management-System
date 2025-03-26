@@ -83,9 +83,7 @@ function RegisterServiceProvider() {
                     <li className="nav-item">
                       <a className="nav-link" href="/RoomList">Properties</a>
                     </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href="/register-service-provider">Service Provider</a>
-                    </li>
+                   
                      
       
                     {/* Dropdown Menu */}
@@ -104,7 +102,7 @@ function RegisterServiceProvider() {
                         <li><a className="dropdown-item" href="/profile">View Profile</a></li>
                         <li><a className="dropdown-item" href="/MyRoom">My Room</a></li>
                         <li><a className="dropdown-item" href="/MyListings">My Listings</a></li>
-                        <li><a className="dropdown-item" href="/MyListings">Rate Us</a></li>
+                        <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
                         <li><hr className="dropdown-divider" /></li>
                         <li>
                         {sessionStorage.getItem("token") && (
@@ -125,7 +123,7 @@ function RegisterServiceProvider() {
       
       <div className="Register-container">
         <h2>Register as a Service Provider</h2>
-        <p>Fill out the form below to list your services.</p>
+        <p className="sub-topic">Fill out the form below to list your services.</p>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label className="form-label">Name <span className="text-danger">*</span></label>
@@ -151,7 +149,7 @@ function RegisterServiceProvider() {
             <label className="form-label">Description</label>
             <textarea className="form-control" rows="4" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
           </div>
-          <button type="submit" className="btn btn-primary w-100">Register</button>
+          <button type="submit" className="Loginbtn btn-primary w-100">Register</button>
         </form>
       </div>
     </>
