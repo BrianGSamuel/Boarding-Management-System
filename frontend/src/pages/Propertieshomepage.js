@@ -157,7 +157,6 @@ function RoomList() {
                   <li><a className="dropdown-item" href="/Login">Login</a></li>
                   <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="/Register">Register</a></li>
-                  <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
                  
                   <li>
                   {sessionStorage.getItem("token") && (

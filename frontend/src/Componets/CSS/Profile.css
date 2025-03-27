@@ -150,13 +150,6 @@ button {
   margin-left: 75%;
   margin-right: 0px;
 }
-.carousel-slide2{
-  display: flex;
-  width: 700px;
-  justify-content: center;
-  align-items: center;
-  margin-left: 17%;
-}
 
 .ratingbtn{
   margin-left: 100px;
@@ -169,9 +162,11 @@ button {
 }
 
 .imagethumbnail{
-  margin-left: 60%;
+  margin-left: 400px;
 }
-
+.imagethumbnail2{
+  margin-left: 300px;
+}
 
 
 

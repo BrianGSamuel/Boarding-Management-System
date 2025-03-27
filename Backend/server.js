@@ -6,7 +6,6 @@ const multer = require("multer");
 const path = require("path");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const nodemailer = require("nodemailer");
 require("dotenv").config(); // Load environment variables from .env file
 const fs = require("fs");
 
@@ -42,15 +41,11 @@ connection.once("open", () => {
   console.log("MongoDB is connected and ready!");
 });
 
-
 // Models
 const Room = require("./models/Room");
 const User = require("./models/User"); 
-const Admin = require("./models/Employee");
-const serviceProvider = require("./models/serviceProvider");
-
-
-
+const Admin = require("./models/Employee"); 
+const Ticket = require("./models/Ticket");
 
 // Multer setup for image uploads
 const storage = multer.diskStorage({
@@ -84,52 +79,6 @@ const upload = multer({
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
 });
 
-
-// Email sending function
-app.post("/send-email", async (req, res) => {
-  const { email, name } = req.body;
-
-  if (!email || !name) {
-    return res.status(400).json({ error: "Email and name are required" });
-  }
-
-  try {
-    // Create transporter
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: "unistaymanagement@gmail.com",
-        pass: "fcez nici kcvj lenq", // Paste the generated App Password here
-      },
-    });
-
-    // Email options
-  const mailOptions = {
-  from: process.env.EMAIL_USER,
-  to: email,
-  subject: "Welcome to UniStay - Your Trusted Boarding Partner!",
-  html: `<h2>Hi ${name},</h2>
-         <p>Welcome to <strong>UniStay</strong>! 🎉 We're excited to have you on board.</p>
-         <p>UniStay is designed to make your boarding experience seamless and secure. Here’s what you can expect:</p>
-         <ul>
-           <li>🏠 <strong>Verified Listings:</strong> All rooms are reviewed and approved by our boarding manager to ensure quality and safety.</li>
-           <li>💬 <strong>Built-in Messaging:</strong> Easily chat with landlords through our secure messaging system.</li>
-           <li>🎟️ <strong>Ticket Support:</strong> Have any questions or issues? Our ticket system allows you to get assistance quickly.</li>
-           <li>📢 <strong>List Your Boarding House:</strong> If you're a landlord, you can easily add your boarding house and connect with potential tenants.</li>
-         </ul>
-         <p>We’re here to help you find (or list) the perfect place to stay. Log in now and explore your options!</p>
-         <p>Best Regards,<br><strong>The UniStay Team</strong></p>`,
-};
-
-
-    // Send email
-    await transporter.sendMail(mailOptions);
-    res.status(200).json({ message: "Email sent successfully" });
-  } catch (error) {
-    console.error("Email sending error:", error);
-    res.status(500).json({ error: "Error sending email" });
-  }
-});
 
 // Admin Registration Route
 app.post("/Adminregister", async (req, res) => {
@@ -246,9 +195,9 @@ app.use("/Customer", CustomerRouter);
 const roomRoutes = require("./Routes/roomRoute");
 app.use("/Room", roomRoutes); 
 
-const serviceProviderRoutes = require("./Routes/serviceProviderRoutes");
-app.use("/serviceProvider", serviceProviderRoutes);
-
+//Access Ticket routes
+const ticketRoute = require("./Routes/ticketRoute")
+app.use("/Ticket" , ticketRoute);
 
 
 // Error handling for unhandled routes
@@ -266,8 +215,3 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server is up and running on port number: ${PORT}`);
 });
-
-
-
-
-
