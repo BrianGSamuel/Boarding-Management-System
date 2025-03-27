@@ -163,8 +163,8 @@ const MessagePage = () => {
                 {chatHistory.length > 0 ? (
                   chatHistory.map((msg, index) => (
                     <div key={index} className="message-bubble mb-3">
-                      <div className="message-content p-3">
-                        <p className="mb-1">{msg.message}</p>
+                      <div className="messaging-content p-3">
+                        <p className="message mb-1">{msg.message}</p>
                         <small className="text-muted">
                           {msg.createdAt ? new Date(msg.createdAt).toLocaleString() : "Unknown time"}
                         </small>
