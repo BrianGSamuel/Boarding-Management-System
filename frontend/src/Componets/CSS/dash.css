@@ -69,10 +69,11 @@
 }
 
 @keyframes backgroundSlider {
+
   0% { background-image: url('../assets/SLIIT-malabe.jpg'); }
-  25% { background-image: url('../assets/Moving-Day.png'); }
-  50% { background-image: url('../assets/homepageimage.jpg'); }
-  75% { background-image: url('../assets/moving-house-check.avif'); }
+  25% { background-image: url('../assets/dashboardimage1.jpg'); }
+  50% { background-image: url('../assets/dashboardimage3.webp'); }
+  75% { background-image: url('../assets/Moving-Day.png'); }
   100% { background-image: url('../assets/key-exchnage.webp'); }
   
 }
