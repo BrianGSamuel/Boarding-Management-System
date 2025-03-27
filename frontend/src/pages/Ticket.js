@@ -82,7 +82,6 @@ function RaiseTicket() {
       <div className="RaiseTicket-container">
         <h2 className="mt-1">Raise a Support Ticket</h2>
         <form onSubmit={handleSubmit}>
-       
           <div className="mb-3">
             <label className="form-label">Issue Title *</label>
             <input

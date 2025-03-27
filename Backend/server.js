@@ -47,6 +47,7 @@ connection.once("open", () => {
 const Room = require("./models/Room");
 const User = require("./models/User"); 
 const Admin = require("./models/Employee");
+const Ticket = require("./models/Ticket");
 const serviceProvider = require("./models/serviceProvider");
 
 
@@ -248,6 +249,9 @@ app.use("/Room", roomRoutes);
 
 const serviceProviderRoutes = require("./Routes/serviceProviderRoutes");
 app.use("/serviceProvider", serviceProviderRoutes);
+
+const ticketRoutes = require("./Routes/ticketRoute");
+app.use("/Ticket", ticketRoutes);
 
 
 
