@@ -416,7 +416,7 @@ const generatePDF = (room) => {
                   <li><a className="dropdown-item" href="/profile">View Profile</a></li>
                   <li><a className="dropdown-item" href="/MyRoom">My Room</a></li>
                   <li><a className="dropdown-item" href="/MyListings">My Listings</a></li>
-                  <li><a className="dropdown-item" href="/MyListings">Rate Us</a></li>
+                  <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
                   <li><hr className="dropdown-divider" /></li>
                   <li>
                   {sessionStorage.getItem("token") && (
@@ -442,7 +442,7 @@ const generatePDF = (room) => {
       <div className="room-details">
       
        {/* Main Image Carousel */}
-       <div id="roomImageCarousel" className="carousel slide" data-bs-ride="false">
+       <div id="roomImageCarousel" className="carousel-slide2" data-bs-ride="false">
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <img
@@ -455,20 +455,19 @@ const generatePDF = (room) => {
             </div>
           </div>
 
-          {/* Thumbnails */}
-          <div className="row mt-2 justify-content-center">
-            {room.images.map((image, index) => (
-              <div key={index} className="col-1">
-                <img
-                  src={`http://localhost:8070${image}`}
-                  alt={`Thumbnail ${index + 1}`}
-                  className="img-thumbnail"
-                  onClick={() => handleThumbnailClick(index)} // Set active image on thumbnail click
-                  
-                />
-              </div>
-            ))}
-          </div>
+           {/* Thumbnails */}
+           <div className="imagethumbnail d-flex mt-3 gap-2">
+                      {room.images.map((image, index) => (
+                        <img
+                          key={index}
+                          src={`http://localhost:8070${image}`}
+                          alt={`Thumbnail ${index + 1}`}
+                          className="img-thumbnail"
+                          style={{ width: '60px', height: '60px', cursor: 'pointer', objectFit: 'cover', borderRadius: '5px' }}
+                          onClick={() => handleThumbnailClick(index)}
+                        />
+                      ))}
+                    </div>
         <h3><strong>{room.roomType}</strong> - {room.roomCity}</h3>
         <p><strong>Posted On</strong> - {new Date(room.createdAt).toLocaleString()}</p>
         <p className="room-price"><strong>Price</strong> Rs {room.price.toLocaleString()} / month</p>
