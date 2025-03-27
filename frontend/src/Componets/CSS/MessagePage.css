@@ -23,8 +23,11 @@
     margin-left: 15%;
     margin-right: 15%;
   }
-  
-  .message-content {
+  .message{
+    color: white;
+  }
+
+  .messaging-content {
     background-color: #00725e;
     color: white;
     border-radius: 15px;

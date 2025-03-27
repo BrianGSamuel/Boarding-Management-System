@@ -39,7 +39,7 @@ function RegisterServiceProvider() {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert(response.data.message);
-      navigate("/dashboard");
+      navigate("/dash");
     } catch (error) {
       alert(error.response?.data?.error || "Error registering. Please try again later.");
     }

@@ -24,6 +24,7 @@ import RegisterServiceProvider from "./pages/RegisterServiceProvider.js";
 import ServiceAgentDashboard from './pages/ServiceAgentDash.js';
 import ViewServiceProviders from './pages/ViewServiceProviders.js';
 import ViewVerifyList from './pages/ViewVerifyList.js';
+import Ticket from './pages/Ticket.js';
 
 import Message from './pages/Chat.js';
 
@@ -43,7 +44,7 @@ function App() {
 
           <Route path="/Properties" element={<Properties />} />          
 
-          <Route path="/Properties" element={<Properties />} />       
+            
 
           <Route path="/Profile" element={<Profilepage />} /> 
           <Route path='/AddRoom' element={<AddRoom />} />
@@ -62,8 +63,7 @@ function App() {
           <Route path="/service-agent-dash" element={<ServiceAgentDashboard />} />
           <Route path="/service-provider-list" element={<ViewServiceProviders />} />
           <Route path="/service-provider-verify" element={<ViewVerifyList />} />
-
-
+          <Route path="/Ticket" element={<Ticket />} />
           <Route path="/chatpage" element={<Message />} />
 
         </Routes>
