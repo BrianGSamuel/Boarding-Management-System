@@ -171,7 +171,7 @@ function BookRoomPage() {
 
           {/* Card Body Content */}
           <h5 className="card-title"><strong> Price </strong> Rs. {room.price.toLocaleString()}/ month</h5>
-          <p><strong>Published On</strong> - {new Date(room.createdAt).toLocaleString()}</p>
+          <p className="card-text"><strong>Published On</strong> - {new Date(room.createdAt).toLocaleString()}</p>
           <p className="card-text"><strong>Description:</strong>{room.description}</p>
           <p className="card-text"><strong>Owner:</strong> {room.ownerName} </p>
           <p className="card-text"><strong>Negotiable:</strong> {room.isNegotiable ? "Yes" : "No"}</p>
