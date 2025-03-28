@@ -182,16 +182,21 @@ function BookForm() {
                   </div>
                   <div className="mb-3">
                   <label className="form-label">Rental Period - Months</label>
-                  <input
-                    type="text"
+                  <select
                     name="buyingDuration"
-                    
                     className="form-control"
                     value={formData.buyingDuration}
                     onChange={handleChange}
                     required
-                  />
+                  >
+                    <option value="">Select Duration</option>
+                    <option value="1">1 Month</option>
+                    <option value="3">3 Months</option>
+                    <option value="6">6 Months</option>
+                    <option value="12">12 Months</option>
+                  </select>
                 </div>
+
 
                   <button type="submit" className="btn btn-primary w-100">Show Owner You are interested</button>
                 </form>
