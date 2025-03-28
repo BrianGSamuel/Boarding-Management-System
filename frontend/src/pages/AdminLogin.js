@@ -29,7 +29,7 @@ const AdminLogin = () => {
       {/* Navigation Bar */}
       <nav className="navbar navbar-expand-lg">
         <div className="container">
-          <a className="navbar-brand" href="/">Admin Portal</a>
+          <a className="navbar-brand" href="/">Boarding Manager Portal</a>
           <button
             className="navbar-toggler"
             type="button"
@@ -45,7 +45,7 @@ const AdminLogin = () => {
       </nav>
 
       <div className="Login-container">
-        <h2 className="heading">Admin Login</h2>
+        <h2 className="heading">Boarding Manager Login</h2>
         <form onSubmit={handleAdminLogin} className="w-70 mx-auto mt-4">
           <div className="mb-3">
             <label htmlFor="email" className="AdminLoginform-label">Email:</label>
@@ -78,6 +78,7 @@ const AdminLogin = () => {
             {message}
           </div>
         )}
+        {/*
         <div className="text-center mt-3">
           <p>
             Not an Admin?{" "}
@@ -86,6 +87,7 @@ const AdminLogin = () => {
             </Link>
           </p>
         </div>
+        */}
       </div>
     </>
   );
