@@ -140,35 +140,33 @@ function BookRoomPage() {
         
         <div className="card-body">
         <h5 className="card-title">{room.roomType} for Rent - {room.roomCity}</h5>
-          {/* Main Image Carousel */}
-          <div id="roomImageCarousel" className="carousel slide" data-bs-ride="false">
+           {/* Main Image Carousel */}
+       <div id="roomImageCarousel" className="carousel-slide2" data-bs-ride="false">
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <img
                   src={`http://localhost:8070${room.images[activeImageIndex]}`}
                   alt={`Room ${activeImageIndex + 1}`}
                   className="d-block w-100"
-                  style={{ maxWidth: '400px', maxHeight: '350px', margin: 'auto', borderRadius: '10px', marginTop: '10px'}} // Custom image size
+                  style={{ maxWidth: '500px', maxHeight: '300px', margin: 'auto', borderRadius: '10px', marginTop: '10px'}} // Custom image size
                 />
               </div>
             </div>
           </div>
 
           {/* Thumbnails */}
-          <div className="row mt-3 justify-content-center">
-            {room.images.map((image, index) => (
-              <div key={index} className="col-1">
-                <img
-                  src={`http://localhost:8070${image}`}
-                  alt={`Thumbnail ${index + 1}`}
-                  className="img-thumbnail"
-                  onClick={() => handleThumbnailClick(index)} // Set active image on thumbnail click
-                  
-                />
-              </div>
-            ))}
-          </div>
-
+          <div className="imagethumbnail d-flex mt-3 gap-2">
+                      {room.images.map((image, index) => (
+                        <img
+                          key={index}
+                          src={`http://localhost:8070${image}`}
+                          alt={`Thumbnail ${index + 1}`}
+                          className="img-thumbnail"
+                          style={{ width: '60px', height: '60px', cursor: 'pointer', objectFit: 'cover', borderRadius: '5px' }}
+                          onClick={() => handleThumbnailClick(index)}
+                        />
+                      ))}
+                    </div>
           {/* Card Body Content */}
           <h5 className="card-title"><strong> Price </strong> Rs. {room.price.toLocaleString()}/ month</h5>
           <p className="card-text"><strong>Published On</strong> - {new Date(room.createdAt).toLocaleString()}</p>
