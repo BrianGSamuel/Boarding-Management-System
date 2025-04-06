@@ -13,6 +13,7 @@ const getAllRooms = async (req, res) => {
   }
 };
 
+
 // Fetch rooms of the logged-in customer
 const getMyRooms = async (req, res) => {
   try {
