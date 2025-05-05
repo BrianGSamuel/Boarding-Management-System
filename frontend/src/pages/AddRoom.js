@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import '../Componets/CSS/AddRoom.css'
 import logo from "../Componets/assets/unistaylogo.png";
+
 function AddRoom() {
   const [roomAddress, setRoomAddress] = useState("");
   const [roomCity, setRoomCity] = useState("");
@@ -14,6 +15,7 @@ function AddRoom() {
   const [images, setImages] = useState([]);
   const [description, setDescription] = useState("");
   const navigate = useNavigate();
+  const [agreeToTerms, setAgreeToTerms] = useState(false); // Track if user agrees to terms
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
@@ -29,6 +31,11 @@ function AddRoom() {
   const removeImage = (index) => {
     setImages((prevImages) => prevImages.filter((_, i) => i !== index));
   };
+
+  const handleAgreeToTermsChange = (e) => {
+    setAgreeToTerms(e.target.checked); // Update the agreement state
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -157,14 +164,17 @@ function AddRoom() {
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="profileDropdown">
                   <li><a className="dropdown-item" href="/profile">View Profile</a></li>
+                  <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="/MyRoom">My Room</a></li>
+                  <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="/MyListings">My Listings</a></li>
+                  <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
                   <li><hr className="dropdown-divider" /></li>
                   <li>
                   {sessionStorage.getItem("token") && (
                   <li className="nav-item">
-                    <button className="dropdown-item" onClick={handleLogout}>Logout</button>
+                    <button className="dropdown-item" onClick={handleLogout}><strong>Logout</strong></button>
                   </li>
                 )}
                   </li>
@@ -369,9 +379,29 @@ function AddRoom() {
             </div>
           </div>
         </div>
-        <button type="submit" className="btn btn-primary w-100">
-          Add Room
-        </button>
+
+        
+          {/* Agreement Checkbox */}
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              checked={agreeToTerms}
+              onChange={handleAgreeToTermsChange}
+            />
+            <label className="form-check-label">
+              I agree to the <strong >Terms and Conditions</strong>
+              <h6><a href="/Terms">Terms and Conditions</a></h6>
+            </label>
+          </div>
+
+        {/* Disable booking button if terms are not agreed */}
+        <button
+            className="btn btn-primary mt-3"
+            disabled={!agreeToTerms}
+          >
+           Add to Listings
+          </button>
       </form>
     </div>
     </div>

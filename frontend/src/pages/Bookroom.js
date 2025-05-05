@@ -250,6 +250,7 @@ function BookRoomPage() {
             />
             <label className="form-check-label">
               I agree to the <strong >Terms and Conditions</strong>
+              <h6><a href="/Terms">Terms and Conditions</a></h6>
             </label>
           </div>
 
