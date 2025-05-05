@@ -45,14 +45,13 @@ function AboutUs() {
               <li className="nav-item">
                 <a className="nav-link" href="/">Home Page</a>
               </li>
+             
               <li className="nav-item">
-                <a className="nav-link" href="/AddRoom">Post Add</a>
+                           <a className="nav-link" href="/Properties">Properties</a>
+                         
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/RoomList">Properties</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/AboutUs">About Us</a>
+                <a className="nav-link" href="/HAboutUs">About Us</a>
               </li>
               {/* Dropdown Menu */}
               <li className="nav-item dropdown">
