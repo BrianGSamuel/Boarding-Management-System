@@ -132,13 +132,13 @@ function RoomList() {
           <div className="collapse navbar-collapse" id="navbarContent">
             <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-                <a className="nav-link" href="/">Home</a>
+                <a className="nav-link" href="/">Home Page</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/Login">Post Add</a>
+                <a className="nav-link" href="/Properties">Properties</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/AboutUs">About Us</a>
+                <a className="nav-link" href="/HAboutUs">About Us</a>
               </li>
               
               {/* Dropdown Menu */}
