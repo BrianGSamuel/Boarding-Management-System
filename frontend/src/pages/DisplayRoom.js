@@ -4,6 +4,7 @@ import axios from "axios";
 import searchIcon from "../Componets/assets/searchimage.png";
 import '../Componets/CSS/DisplayRoom.css';
 import logo from "../Componets/assets/unistaylogo.png";
+
 function RoomList() {
   const location = useLocation();
   const { state } = location || {};
@@ -139,7 +140,10 @@ function RoomList() {
                 <a className="nav-link" href="/AddRoom">Post Add</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/Userroom">About Us</a>
+                <a className="nav-link" href="/RoomList">Properties</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/AboutUs">About Us</a>
               </li>
              
               
@@ -157,14 +161,17 @@ function RoomList() {
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="profileDropdown">
                   <li><a className="dropdown-item" href="/profile">View Profile</a></li>
+                  <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="/MyRoom">My Room</a></li>
+                  <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="/MyListings">My Listings</a></li>
+                  <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
                   <li><hr className="dropdown-divider" /></li>
                   <li>
                   {sessionStorage.getItem("token") && (
                   <li className="nav-item">
-                    <button className="dropdown-item" onClick={handleLogout}>Logout</button>
+                    <button className="dropdown-item" onClick={handleLogout}><strong>Logout</strong></button>
                   </li>
                 )}
                   </li>

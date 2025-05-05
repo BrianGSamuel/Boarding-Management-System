@@ -77,12 +77,18 @@ function RegisterServiceProvider() {
                   </button>
                   <div className="collapse navbar-collapse" id="navbarContent">
                   <ul className="navbar-nav ms-auto">
+                  <li className="nav-item">
+                  <a className="nav-link" href="/dash">Dashboard</a>
+                  </li>
                     <li className="nav-item">
                       <a className="nav-link" href="/AddRoom">Post Add</a>
                     </li>
                     <li className="nav-item">
                       <a className="nav-link" href="/RoomList">Properties</a>
                     </li>
+                    <li className="nav-item">
+                  <a className="nav-link" href="/Userroom">About Us</a>
+                  </li>
                    
                      
       
@@ -99,12 +105,15 @@ function RegisterServiceProvider() {
                         Account
                       </a>
                       <ul className="dropdown-menu" aria-labelledby="profileDropdown">
-                        <li><a className="dropdown-item" href="/profile">View Profile</a></li>
-                        <li><a className="dropdown-item" href="/MyRoom">My Room</a></li>
-                        <li><a className="dropdown-item" href="/MyListings">My Listings</a></li>
-                        <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
-                        <li><hr className="dropdown-divider" /></li>
-                        <li>
+                      <li><a className="dropdown-item" href="/profile">View Profile</a></li>
+                    <li><hr className="dropdown-divider" /></li>
+                    <li><a className="dropdown-item" href="/MyRoom">My Room</a></li>
+                    <li><hr className="dropdown-divider" /></li>
+                    <li><a className="dropdown-item" href="/MyListings">My Listings</a></li>
+                    <li><hr className="dropdown-divider" /></li>
+                    <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
+                    <li><hr className="dropdown-divider" /></li>
+                    <li>
                         {sessionStorage.getItem("token") && (
                         <li className="nav-item">
                           <button className="dropdown-item" onClick={handleLogout}><strong>Logout</strong></button>

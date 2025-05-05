@@ -13,12 +13,15 @@ import Profilepage from './pages/Profile.js';
 import BookingForm from './pages/BookingForm.js'
 import RoomDetailsPage from './pages/Rating.js';
 import Mylistings from './pages/MyListings.js';
-import AllListings from './pages/AllListings.js';
+
 import Confirm from './pages/Confirm.js';
 import AdminLogin from './pages/AdminLogin.js';
 import AdminRegister from './pages/AdminRegister.js';
 import Admindashboard from './pages/Admindashboard.js';
 import Properties from './pages/Propertieshomepage.js';
+import AboutUs from './pages/About.js';
+import HAboutUs from './pages/HomeAboutus.js';
+import Terms from './pages/TermsCondi.js';
 
 import RegisterServiceProvider from "./pages/RegisterServiceProvider.js";
 import ServiceAgentDashboard from './pages/ServiceAgentDash.js';
@@ -53,11 +56,14 @@ function App() {
           <Route path='/Bookroomform' element={<BookingForm/>} />
           <Route path='/MyRoom' element={<RoomDetailsPage/>} />
           <Route path='/MyListings' element={<Mylistings/>} />
-          <Route path='/allListings' element={<AllListings/>} />
+          
           <Route path='/Confirm' element={<Confirm/>} />
           <Route path="/AdminLogin" element={<AdminLogin />} />
           <Route path="/AdminRegister" element={<AdminRegister />} />
           <Route path="/Admindash" element={<Admindashboard />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/HAboutUs" element={<HAboutUs />} />
+          <Route path="/Terms" element={<Terms />} />
 
           <Route path="/register-service-provider" element={<RegisterServiceProvider />} />
           <Route path="/service-agent-dash" element={<ServiceAgentDashboard />} />
