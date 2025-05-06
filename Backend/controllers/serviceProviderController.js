@@ -11,6 +11,7 @@ exports.registerServiceProvider = async (req, res) => {
       return res.status(400).json({ error: "Email is already registered" });
     }
 
+    
     // Create new service provider
     const newProvider = new ServiceProvider({
       name,

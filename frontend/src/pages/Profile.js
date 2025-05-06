@@ -105,8 +105,11 @@ function LoggedCustomer() {
                   </a>
                   <ul className="dropdown-menu" aria-labelledby="profileDropdown">
                     <li><a className="dropdown-item" href="/profile">View Profile</a></li>
+                    <li><hr className="dropdown-divider" /></li>
                     <li><a className="dropdown-item" href="/MyRoom">My Room</a></li>
+                    <li><hr className="dropdown-divider" /></li>
                     <li><a className="dropdown-item" href="/MyListings">My Listings</a></li>
+                    <li><hr className="dropdown-divider" /></li>
                     <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
                     <li><hr className="dropdown-divider" /></li>
                     <li>

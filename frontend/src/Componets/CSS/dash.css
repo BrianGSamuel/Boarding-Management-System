@@ -94,7 +94,7 @@
   background-repeat: no-repeat;
   
   /* Apply the animation */
-  animation: backgroundSlider 360s infinite ease-in-out;
+  animation: backgroundSlider 100s infinite ease-in-out;
 }
 
 
@@ -364,7 +364,7 @@
  /*Newletter.css */
  .newsletter-container {
   background-color: #ffffff;
-  max-height: 300px;
+  max-height: 350px;
  
 }
 
@@ -379,9 +379,12 @@
   background-image: url("../assets/drawinghouse.png");
   background-size: cover;
   background-position: 455px;
-  width: 250px;
+  width: 280px;
   height: 250px;
+  margin: -5%;
+  margin-left: -10%;
   margin-right: -10%;
+  border-radius: 5%;
 }
 
 .submit-btn{
@@ -391,7 +394,7 @@
   border: 0px;
   background-color: #162A2C;
   color: white;
-  margin-left: -19%;
+  margin-left: -17%;
   margin-top: 0px;
 }
 
