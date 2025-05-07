@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import '../Componets/CSS/Ticket.css';
+import "../Componets/CSS/Ticket.css";
 import logo from "../Componets/assets/unistaylogo.png";
 
 function RaiseTicket() {
@@ -13,26 +13,26 @@ function RaiseTicket() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const token = sessionStorage.getItem("token");
-  
+
     if (!token) {
       alert("You must be logged in to raise a ticket.");
       return;
     }
-  
+
     if (!issueTitle || !issueCategory || !priority || !description) {
       alert("Please fill out all required fields.");
       return;
     }
-  
+
     const formData = {
       title: issueTitle,
       category: issueCategory,
       priority: priority,
       description: description,
     };
-  
+
     try {
       const response = await axios.post("http://localhost:8070/Ticket/raise", formData, {
         headers: {
@@ -41,17 +41,22 @@ function RaiseTicket() {
         },
       });
       alert(response.data.message);
-  
+
       navigate("/MyTickets");
-  
+
       setIssueTitle("");
       setIssueCategory("");
       setPriority("");
       setDescription("");
     } catch (error) {
+      console.error("Error raising ticket:", error.response?.data || error.message);
       const errorMessage = error.response?.data?.error || "Error raising the ticket. Please try again later.";
       alert(errorMessage);
     }
+  };
+
+  const handlePriorityChange = (e) => {
+    setPriority(e.target.value);
   };
 
   return (
@@ -101,17 +106,19 @@ function RaiseTicket() {
               required
             >
               <option value="">Select Category</option>
-              <option value="Technical Issue">Complaints</option>
-              <option value="Billing">Sevice Request</option>
-              <option value="General Inquiry">General Inquiry</option>
+              <option value="Inquiries">Inquiries</option>
+              <option value="Complaints">Complaints</option>
             </select>
           </div>
           <div className="mb-3">
-            <label className="form-label">Priority *</label>
+            <label htmlFor="prioritySelect" className="form-label">
+              Priority *
+            </label>
             <select
-              className="form-control"
+              id="prioritySelect"
+              className={`form-control ${priority === "High" ? "high-priority" : ""}`}
               value={priority}
-              onChange={(e) => setPriority(e.target.value)}
+              onChange={handlePriorityChange}
               required
             >
               <option value="">Select Priority</option>

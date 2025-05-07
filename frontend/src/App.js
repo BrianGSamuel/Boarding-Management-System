@@ -32,6 +32,10 @@ import Ticket from './pages/Ticket.js';
 
 import Message from './pages/Chat.js';
 
+import CustomerCareLogin from'./pages/CustomerCareLogin.js';
+import CustomerCareRegister from './pages/CustomerCareRegister.js';
+import CustomerCareDashboard from './pages/CustomerCareDashboard.js';
+
 
 
 
@@ -73,6 +77,11 @@ function App() {
           <Route path="/Ticket" element={<Ticket />} />
           <Route path="/chatpage" element={<Message />} />
           <Route path="/service-providers" element={<CustomerServiceProviders />} />
+
+
+          <Route path="/CustomerCareLogin" element={<CustomerCareLogin />} />
+          <Route path="/CustomerCareRegister" element={<CustomerCareRegister />} />
+          <Route path="/CustomerCareDashboard" element={<CustomerCareDashboard />} />
 
         </Routes>
       </div>
