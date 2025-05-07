@@ -1,0 +1,131 @@
+.customer-service-container {
+    padding: 20px;
+    background-color: #f5f7fa;
+    min-height: 100vh;
+  }
+  
+  .search-bar-container {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 800px; /* Reduced width for search bar */
+    margin: 0 auto; /* Center the search bar */
+  }
+  
+  .search-bar-container .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 8px;
+  }
+  
+  .search-bar-container .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 7px 16px;
+    font-weight: 500;
+  }
+  
+  .search-bar-container .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  
+  .service-providers-list {
+    max-width: 800px; /* Reduced width for the service provider list */
+    margin: 0 auto; /* Center the list */
+  }
+  
+  .service-providers-list h2 {
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  
+  .provider-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    transition: box-shadow 0.3s;
+  }
+  
+  .provider-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .provider-image {
+    flex-shrink: 0;
+  }
+  
+  .provider-details {
+    flex-grow: 1;
+    padding-left: 15px;
+  }
+  
+  .provider-details h5 {
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .provider-details p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .provider-details strong {
+    color: #444;
+  }
+  
+  .provider-rating .badge {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+  
+  .provider-rating button {
+    margin-top: 10px;
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+  
+  @media (max-width: 768px) {
+    .provider-card {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .provider-image {
+      margin-bottom: 15px;
+    }
+  
+    .provider-details {
+      padding-left: 0;
+    }
+  
+    .provider-rating {
+      margin-top: 10px;
+      align-items: center;
+    }
+  
+    .search-bar-container .row {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .search-bar-container .col-md-4,
+    .search-bar-container .col-md-2 {
+      width: 100%;
+    }
+  
+    .search-bar-container,
+    .service-providers-list {
+      max-width: 100%; /* Full width on smaller screens */
+      padding: 0 10px; /* Add padding to avoid edge-to-edge on mobile */
+    }
+  }
