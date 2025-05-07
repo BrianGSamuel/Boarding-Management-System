@@ -42,7 +42,6 @@ connection.once("open", () => {
   console.log("MongoDB is connected and ready!");
 });
 
-
 // Models
 const Room = require("./models/Room");
 const User = require("./models/User"); 
@@ -50,13 +49,10 @@ const Admin = require("./models/Employee");
 const Ticket = require("./models/Ticket");
 const serviceProvider = require("./models/serviceProvider");
 
-
-
-
 // Multer setup for image uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const uploadPath = path.join(__dirname, "uploads");
+    const uploadPath = path.join(__dirname, "Uploads");
     if (!fs.existsSync(uploadPath)) {
       fs.mkdirSync(uploadPath, { recursive: true });
     }
@@ -68,7 +64,7 @@ const storage = multer.diskStorage({
 });
 
 // Serve static files (images) from the 'uploads' folder
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/uploads", express.static(path.join(__dirname, "Uploads")));
 
 const upload = multer({
   storage,
@@ -84,7 +80,6 @@ const upload = multer({
   },
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
 });
-
 
 // Email sending function
 app.post("/send-email", async (req, res) => {
@@ -121,7 +116,6 @@ app.post("/send-email", async (req, res) => {
          <p>We’re here to help you find (or list) the perfect place to stay. Log in now and explore your options!</p>
          <p>Best Regards,<br><strong>The UniStay Team</strong></p>`,
 };
-
 
     // Send email
     await transporter.sendMail(mailOptions);
@@ -237,8 +231,6 @@ app.get("/rooms", async (req, res) => {
   }
 });
 
-
-
 // Access Customer routes
 const CustomerRouter = require("./Routes/customerRoute");
 app.use("/Customer", CustomerRouter);
@@ -252,8 +244,6 @@ app.use("/serviceProvider", serviceProviderRoutes);
 
 const ticketRoutes = require("./Routes/ticketRoute");
 app.use("/Ticket", ticketRoutes);
-
-
 
 // Error handling for unhandled routes
 app.use((req, res) => {
@@ -270,8 +260,3 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server is up and running on port number: ${PORT}`);
 });
-
-
-
-
-
