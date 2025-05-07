@@ -47,8 +47,8 @@ function RegisterServiceProvider() {
 
   // Logout function
   const handleLogout = () => {
-    // Remove token fromsessionStorage
-  sessionStorage.removeItem("token");
+    // Remove token from sessionStorage
+    sessionStorage.removeItem("token");
     // Redirect to login page
     navigate("/login", { replace: true });
   };
@@ -56,80 +56,74 @@ function RegisterServiceProvider() {
   return (
     <>
       {/* Navigation Bar and Welcome Section Combined */}
-              <div className="navbar navbar-expand-lg">
-              <div className="container">
-                <div className="LOGO-container">
-                  <a className="nav-link text-warning" href="/">
-                  <img src={logo} alt="LOGO" width="130" />
-                  </a>
-                </div>
-      
-                <button
-                  className="navbar-toggler"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#navbarContent"
-                  aria-controls="navbarContent"
+      <div className="navbar navbar-expand-lg">
+        <div className="container">
+          <div className="LOGO-container">
+            <a className="nav-link text-warning" href="/">
+              <img src={logo} alt="LOGO" width="130" />
+            </a>
+          </div>
+  
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarContent"
+            aria-controls="navbarContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarContent">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <a className="nav-link" href="/dash">Dashboard</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/AddRoom">Post Add</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/RoomList">Properties</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/Userroom">About Us</a>
+              </li>
+              {/* Dropdown Menu */}
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  id="profileDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  aria-label="Toggle navigation"
                 >
-                    <span className="navbar-toggler-icon"></span>
-                  </button>
-                  <div className="collapse navbar-collapse" id="navbarContent">
-                  <ul className="navbar-nav ms-auto">
-                  <li className="nav-item">
-                  <a className="nav-link" href="/dash">Dashboard</a>
+                  Account
+                </a>
+                <ul className="dropdown-menu" aria-labelledby="profileDropdown">
+                  <li><a className="dropdown-item" href="/profile">View Profile</a></li>
+                  <li><hr className="dropdown-divider" /></li>
+                  <li><a className="dropdown-item" href="/MyRoom">My Room</a></li>
+                  <li><hr className="dropdown-divider" /></li>
+                  <li><a className="dropdown-item" href="/MyListings">My Listings</a></li>
+                  <li><hr className="dropdown-divider" /></li>
+                  <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
+                  <li><hr className="dropdown-divider" /></li>
+                  <li>
+                    {sessionStorage.getItem("token") && (
+                      <li className="nav-item">
+                        <button className="dropdown-item" onClick={handleLogout}><strong>Logout</strong></button>
+                      </li>
+                    )}
                   </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href="/AddRoom">Post Add</a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href="/RoomList">Properties</a>
-                    </li>
-                    <li className="nav-item">
-                  <a className="nav-link" href="/Userroom">About Us</a>
-                  </li>
-                   
-                     
-      
-                    {/* Dropdown Menu */}
-                    <li className="nav-item dropdown">
-                      <a
-                        className="nav-link dropdown-toggle"
-                        href="#"
-                        id="profileDropdown"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        Account
-                      </a>
-                      <ul className="dropdown-menu" aria-labelledby="profileDropdown">
-                      <li><a className="dropdown-item" href="/profile">View Profile</a></li>
-                    <li><hr className="dropdown-divider" /></li>
-                    <li><a className="dropdown-item" href="/MyRoom">My Room</a></li>
-                    <li><hr className="dropdown-divider" /></li>
-                    <li><a className="dropdown-item" href="/MyListings">My Listings</a></li>
-                    <li><hr className="dropdown-divider" /></li>
-                    <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
-                    <li><hr className="dropdown-divider" /></li>
-                    <li>
-                        {sessionStorage.getItem("token") && (
-                        <li className="nav-item">
-                          <button className="dropdown-item" onClick={handleLogout}><strong>Logout</strong></button>
-                        </li>
-                      )}
-                        </li>
-                      </ul>
-                    </li>
-      
-                    
-                  </ul>
-                </div>
-      
-                </div>
-              </div>
-      
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
       <div className="Register-container">
         <h2>Register as a Service Provider</h2>
         <p className="sub-topic">Fill out the form below to list your services.</p>
@@ -152,7 +146,23 @@ function RegisterServiceProvider() {
           </div>
           <div className="mb-3">
             <label className="form-label">Service Type <span className="text-danger">*</span></label>
-            <input type="text" className="form-control" value={serviceType} onChange={(e) => setServiceType(e.target.value)} required />
+            <select
+              className="form-control"
+              value={serviceType}
+              onChange={(e) => setServiceType(e.target.value)}
+              required
+            >
+              <option value="" disabled>Select a service type</option>
+              <option value="Plumber">Plumber</option>
+              <option value="Electrician">Electrician</option>
+              <option value="Laundry">Laundry</option>
+              <option value="Cleaning">Cleaning</option>
+              <option value="Pest Control">Pest Control</option>
+              <option value="Mechanic">Mechanic</option>
+              <option value="Painter">Painter</option>
+              <option value="Mason">Mason</option>
+              <option value="Other">Courier</option>
+            </select>
           </div>
           <div className="mb-3">
             <label className="form-label">Description</label>
