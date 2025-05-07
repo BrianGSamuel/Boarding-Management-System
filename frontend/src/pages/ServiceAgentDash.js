@@ -31,7 +31,7 @@ function Dashboard() {
       {/* Main Content */}
       <div className="dashboard-content">
         <h2>Welcome to the Service Agent Dashboard</h2>
-        <p>Select a section from the menu to manage service providers and requests.</p>
+        <p className="topic">Select a section from the menu to manage service providers and requests.</p>
       </div>
     </div>
   );
