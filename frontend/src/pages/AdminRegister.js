@@ -16,6 +16,7 @@ function AddAdmin() {
 
   function sendData(e) {
     e.preventDefault();
+    
 
     // Check if required fields are filled
     if (!name || !Phonenumber || !email || !password  ) {

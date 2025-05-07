@@ -78,7 +78,6 @@ function App() {
           <Route path="/chatpage" element={<Message />} />
           <Route path="/service-providers" element={<CustomerServiceProviders />} />
 
-
           <Route path="/CustomerCareLogin" element={<CustomerCareLogin />} />
           <Route path="/CustomerCareRegister" element={<CustomerCareRegister />} />
           <Route path="/CustomerCareDashboard" element={<CustomerCareDashboard />} />
