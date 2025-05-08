@@ -150,7 +150,7 @@ function AdminDashboard() {
       // Remove token from sessionstorage
       sessionStorage.removeItem("token");
       // Redirect to login page
-      navigate("/AdminLogin", { replace: true });
+      navigate("/StaffLogin", { replace: true });
     };
   
 
