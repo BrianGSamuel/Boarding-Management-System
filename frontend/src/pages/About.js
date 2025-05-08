@@ -52,8 +52,12 @@ function AboutUs() {
                 <a className="nav-link" href="/RoomList">Properties</a>
               </li>
               <li className="nav-item">
+                <a className="nav-link" href="/service-providers">Services</a>
+              </li>
+              <li className="nav-item">
                 <a className="nav-link" href="/AboutUs">About Us</a>
               </li>
+             
               {/* Dropdown Menu */}
               <li className="nav-item dropdown">
                 <a
@@ -74,6 +78,7 @@ function AboutUs() {
                   <li><a className="dropdown-item" href="/MyListings">My Listings</a></li>
                   <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
+                  <li><a className="dropdown-item" href="/saved-providers">Bookmarks</a></li>
                   <li><hr className="dropdown-divider" /></li>
                   {sessionStorage.getItem('token') && (
                     <li>

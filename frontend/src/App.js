@@ -31,6 +31,8 @@ import CustomerServiceProviders from './pages/CustomerServiceProviders.js';
 import Ticket from './pages/Ticket.js';
 
 import Message from './pages/Chat.js';
+import ServiceProviderDetails from './pages/ServiceProviderDetails.js';
+import SavedProviders from './pages/SavedProviders.js';
 
 
 
@@ -73,6 +75,8 @@ function App() {
           <Route path="/Ticket" element={<Ticket />} />
           <Route path="/chatpage" element={<Message />} />
           <Route path="/service-providers" element={<CustomerServiceProviders />} />
+          <Route path="/service-providers-details" element={<ServiceProviderDetails />} />
+          <Route path="/saved-providers" element={<SavedProviders />} />
 
         </Routes>
       </div>
