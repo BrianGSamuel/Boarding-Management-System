@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom"; // Navigation hooksr-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Componets/CSS/SavedProviders.css";
 
@@ -13,6 +13,7 @@ import mechanicImg from "../Componets/assets/mechanic.jpg";
 import painterImg from "../Componets/assets/painter.jpg";
 import masonImg from "../Componets/assets/mason.jpg";
 import otherImg from "../Componets/assets/courier.jpg";
+import logo from "../Componets/assets/unistaylogo.png";
 
 function SavedProviders() {
   const [savedProviders, setSavedProviders] = useState([]);
@@ -50,7 +51,96 @@ function SavedProviders() {
     navigate("/service-providers-details", { state: { provider } });
   };
 
+  
+         // Logout function
+         const handleLogout = () => {
+          // Remove token fromsessionStorage
+        sessionStorage.removeItem("token");
+          // Redirect to login page
+          navigate("/login", { replace: true });
+        };
+
   return (
+
+    <>
+              
+        
+              {/* Navbar */}
+              <nav className="navbar navbar-expand-lg">
+                <div className="container">
+                  <div className="LOGO-container">
+                    <a className="nav-link text-warning" href="/">
+                    <img src={logo} alt="LOGO" width="130" />
+                    </a>
+                    </div>
+                  <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarContent"
+                    aria-controls="navbarContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span className="navbar-toggler-icon"></span>
+                  </button>
+                  <div className="collapse navbar-collapse" id="navbarContent">
+                    <ul className="navbar-nav ms-auto">
+                    <li className="nav-item">
+                        <a className="nav-link" href="/dash">Dashboard</a>
+                      </li>
+                      <li className="nav-item">
+                        <a className="nav-link" href="/AddRoom">Post Add</a>
+                      </li>
+                      <li className="nav-item">
+                        <a className="nav-link" href="/RoomList">Properties</a>
+                      </li>
+                      <li className="nav-item">
+                        <a className="nav-link" href="/service-providers">Services</a>
+                      </li>
+                      <li className="nav-item">
+                        <a className="nav-link" href="/AboutUs">About Us</a>
+                      </li>
+                     
+                      
+                      {/* Dropdown Menu */}
+                      <li className="nav-item dropdown">
+                        <a
+                          className="nav-link dropdown-toggle"
+                          href="#"
+                          id="profileDropdown"
+                          role="button"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                           Account
+                        </a>
+                        <ul className="dropdown-menu" aria-labelledby="profileDropdown">
+                          <li><a className="dropdown-item" href="/profile">View Profile</a></li>
+                          <li><hr className="dropdown-divider" /></li>
+                          <li><a className="dropdown-item" href="/MyRoom">My Room</a></li>
+                          <li><hr className="dropdown-divider" /></li>
+                          <li><a className="dropdown-item" href="/MyListings">My Listings</a></li>
+                          <li><hr className="dropdown-divider" /></li>
+                          <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
+                          <li><hr className="dropdown-divider" /></li>
+                          <li><a className="dropdown-item" href="/saved-providers">Bookmarks</a></li>
+                          <li><hr className="dropdown-divider" /></li>
+                          <li>
+                          {sessionStorage.getItem("token") && (
+                          <li className="nav-item">
+                            <button className="dropdown-item" onClick={handleLogout}><strong>Logout</strong></button>
+                          </li>
+                        )}
+                          </li>
+                        </ul>
+                      </li>
+                     
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+
     <div className="saved-container">
       <h2>Saved Providers</h2>
       
@@ -115,6 +205,7 @@ function SavedProviders() {
         Back to Providers
       </button>
     </div>
+    </>
   );
 }
 

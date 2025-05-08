@@ -114,7 +114,7 @@ function RegisterServiceProvider() {
                   <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
                   <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="/saved-providers">Bookmarks</a></li>
-                  <li><hr className="dropdown-divider" /></li>
+                  <li><hr className="dropdown-divider" /></li> 
                   <li>
                     {sessionStorage.getItem("token") && (
                       <li className="nav-item">
