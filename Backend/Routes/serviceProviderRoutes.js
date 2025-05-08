@@ -93,4 +93,70 @@ router.get("/verified", async (req, res) => {
   }
 });
 
+// ✅ Get daily registration counts
+router.get("/daily-registrations", async (req, res) => {
+  try {
+    const registrations = await ServiceProvider.aggregate([
+      {
+        $group: {
+          _id: {
+            $dateToString: { format: "%Y-%m-%d", date: "$createdAt" }
+          },
+          count: { $sum: 1 }
+        }
+      },
+      {
+        $sort: { _id: 1 }
+      },
+      {
+        $project: {
+          date: "$_id",
+          count: 1,
+          _id: 0
+        }
+      }
+    ]);
+
+    res.json(registrations);
+  } catch (error) {
+    console.error("Error fetching daily registrations:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+router.get("/service-type-counts", async (req, res) => {
+  try {
+    const count = await ServiceProvider.countDocuments();
+    console.log("Total ServiceProvider documents:", count);
+
+    const serviceTypeCounts = await ServiceProvider.aggregate([
+      {
+        $match: { serviceType: { $exists: true, $ne: null } } // Ensure serviceType exists
+      },
+      {
+        $group: {
+          _id: "$serviceType",
+          count: { $sum: 1 }
+        }
+      },
+      {
+        $sort: { count: -1 } // Sort by count descending
+      },
+      {
+        $project: {
+          serviceType: "$_id",
+          count: 1,
+          _id: 0
+        }
+      }
+    ]);
+
+    console.log("Service type counts:", serviceTypeCounts);
+    res.json(serviceTypeCounts);
+  } catch (error) {
+    console.error("Error fetching service type counts:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 module.exports = router;
