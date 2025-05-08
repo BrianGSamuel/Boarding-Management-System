@@ -34,6 +34,10 @@ import Message from './pages/Chat.js';
 import ServiceProviderDetails from './pages/ServiceProviderDetails.js';
 import SavedProviders from './pages/SavedProviders.js';
 
+import CustomerCareLogin from'./pages/CustomerCareLogin.js';
+import CustomerCareRegister from './pages/CustomerCareRegister.js';
+import CustomerCareDashboard from './pages/CustomerCareDashboard.js';
+
 
 
 
@@ -77,6 +81,10 @@ function App() {
           <Route path="/service-providers" element={<CustomerServiceProviders />} />
           <Route path="/service-providers-details" element={<ServiceProviderDetails />} />
           <Route path="/saved-providers" element={<SavedProviders />} />
+
+          <Route path="/CustomerCareLogin" element={<CustomerCareLogin />} />
+          <Route path="/CustomerCareRegister" element={<CustomerCareRegister />} />
+          <Route path="/CustomerCareDashboard" element={<CustomerCareDashboard />} />
 
         </Routes>
       </div>

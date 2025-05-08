@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 
-
-function AddAdmin() {
+function CustomerCareRegister() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,59 +10,56 @@ function AddAdmin() {
   const [Lname, setLName] = useState("");
   const [Phonenumber, setPhonenumber] = useState("");
   const [createdAt, setcreatedAt] = useState("");
-
   const navigate = useNavigate();
 
   function sendData(e) {
     e.preventDefault();
-    
 
-    // Check if required fields are filled
-    if (!name || !Phonenumber || !email || !password  ) {
+    if (!name || !Phonenumber || !email || !password) {
       alert("Please fill out all required fields (Name, Phone Number, Email, and Password).");
       return;
     }
 
-    // Check if passwords match
     if (password !== confirmPassword) {
       alert("Passwords do not match. Please try again.");
       return;
     }
 
-    const newAdmin = {
+    const newCustomerCare = {
       name,
       email,
       password,
       Lname,
       Phonenumber,
-      createdAt
+      createdAt,
+      role: "customerCare"
     };
 
     axios
-      .post("http://localhost:8070/Adminregister", newAdmin) // Updated API endpoint for admin registration
-      .then(() => {
-        alert("Admin registration successful!");
+      .post("http://localhost:8070/customer-care/register", newCustomerCare)
+      .then((response) => {
+        console.log("Registration response:", response.data);
+        alert("Customer Care registration successful!");
         setName("");
         setEmail("");
         setPassword("");
         setConfirmPassword("");
         setLName("");
         setPhonenumber("");
-        setcreatedAt("")
-        navigate("/AdminLogin"); // Redirect to admin login page
+        setcreatedAt("");
+        navigate("/CustomerCareLogin");
       })
       .catch((err) => {
-        console.error("Error during admin registration:", err);
+        console.error("Error during customer care registration:", err.response?.data || err.message);
         alert(err.response ? err.response.data.error : "An error occurred");
       });
   }
 
   return (
     <>
-      {/* Navigation Bar */}
       <nav className="navbar navbar-expand-lg">
         <div className="container">
-          <a className="navbar-brand" href="/">Admin Portal</a>
+          <a className="navbar-brand" href="/">Customer Care Portal</a>
           <button
             className="navbar-toggler"
             type="button"
@@ -79,7 +75,7 @@ function AddAdmin() {
       </nav>
 
       <div className="Registration-container">
-        <h2 className="mt-4">Admin Registration</h2>
+        <h2 className="mt-4">Customer Care Registration</h2>
         <form onSubmit={sendData}>
           <div className="row mb-3">
             <div className="col">
@@ -114,7 +110,7 @@ function AddAdmin() {
           <div className="row mb-3">
             <div className="col">
               <label htmlFor="Phonenumber1" className="form-label">
-                Phone Number  <span className="text-danger">*</span>
+                Phone Number <span className="text-danger">*</span>
               </label>
               <input
                 type="number"
@@ -180,9 +176,9 @@ function AddAdmin() {
         </form>
         <div className="text-center mt-3">
           <p>
-            Already an Admin?{" "}
-            <Link to="/AdminLogin" className="text-primary">
-              AdminLogin
+            Already a Customer Care Manager?{" "}
+            <Link to="/CustomerCareLogin" className="text-primary">
+              Customer Care Login
             </Link>
           </p>
         </div>
@@ -191,4 +187,4 @@ function AddAdmin() {
   );
 }
 
-export default AddAdmin;
+export default CustomerCareRegister;
