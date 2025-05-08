@@ -89,6 +89,9 @@ function RegisterServiceProvider() {
               <li className="nav-item">
                 <a className="nav-link" href="/Userroom">About Us</a>
               </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/service-providers">Services</a>
+              </li>
               {/* Dropdown Menu */}
               <li className="nav-item dropdown">
                 <a
@@ -110,6 +113,8 @@ function RegisterServiceProvider() {
                   <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
                   <li><hr className="dropdown-divider" /></li>
+                  <li><a className="dropdown-item" href="/saved-providers">Bookmarks</a></li>
+                  <li><hr className="dropdown-divider" /></li> 
                   <li>
                     {sessionStorage.getItem("token") && (
                       <li className="nav-item">

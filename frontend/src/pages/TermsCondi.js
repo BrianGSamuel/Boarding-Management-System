@@ -52,7 +52,12 @@ function Terms() {
                 <a className="nav-link" href="/RoomList">Properties</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">About Us</a>
+                <a className="nav-link" href="/service-providers">Services</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/AboutUs">About Us</a>
+              </li>
+              <li className="nav-item">
               </li>
               {/* Dropdown Menu */}
               <li className="nav-item dropdown">

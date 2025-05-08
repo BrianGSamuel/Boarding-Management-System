@@ -89,6 +89,9 @@ function LoggedCustomer() {
                   <a className="nav-link" href="/RoomList">Properties</a>
                 </li>
                 <li className="nav-item">
+                <a className="nav-link" href="/service-providers">Services</a>
+              </li>
+                <li className="nav-item">
                   <a className="nav-link" href="/Userroom">About Us</a>
                 </li>
 
@@ -111,6 +114,8 @@ function LoggedCustomer() {
                     <li><a className="dropdown-item" href="/MyListings">My Listings</a></li>
                     <li><hr className="dropdown-divider" /></li>
                     <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
+                    <li><hr className="dropdown-divider" /></li>
+                    <li><a className="dropdown-item" href="/saved-providers">Bookmarks</a></li>
                     <li><hr className="dropdown-divider" /></li>
                     <li>
                       {sessionStorage.getItem("token") && (
