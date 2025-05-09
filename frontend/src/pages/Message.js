@@ -81,7 +81,7 @@ function ChatPage() {
 
   return (
     <>
-      <nav className="body">
+      <nav className="body"> 
         <nav className="navbar navbar-expand-lg">
           <div className="container">
             <div className="LOGO-container">
