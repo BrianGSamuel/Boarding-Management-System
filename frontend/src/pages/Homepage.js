@@ -256,7 +256,7 @@ function HomePage() {
                       </div>
               
                       <button className="filter-search-btn" onClick={applyFilters}>
-                        <img src={searchIcon} alt="Search" className="search-icon" />
+                        search
                       </button>
                 </div>
             

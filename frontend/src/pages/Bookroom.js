@@ -98,9 +98,7 @@ function BookRoomPage() {
               <li className="nav-item">
                 <a className="nav-link" href="/Userroom">About Us</a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/maintenance">Blogs</a>
-              </li>
+              
               
               {/* Dropdown Menu */}
               <li className="nav-item dropdown">
@@ -118,7 +116,8 @@ function BookRoomPage() {
                   <li><a className="dropdown-item" href="/profile">View Profile</a></li>
                   <li><a className="dropdown-item" href="/MyRoom">My Room</a></li>
                   <li><a className="dropdown-item" href="/MyListings">My Listings</a></li>
-                  <li><a className="dropdown-item" href="/MyListings">Rate Us</a></li>
+                  <li><a className="dropdown-item" href="/saved-providers">Bookmarks</a></li>
+                  <li><hr className="dropdown-divider" /></li>
                   <li><hr className="dropdown-divider" /></li>
                   <li>
                   {sessionStorage.getItem("token") && (

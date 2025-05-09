@@ -234,8 +234,10 @@ const handleGoToMessaging = (roomId, buyerName) => {
                 <li className="nav-item"><a className="nav-link" href="/dash">Dashboard</a></li>
                 <li className="nav-item"><a className="nav-link" href="/AddRoom">Post Add</a></li>
                 <li className="nav-item"><a className="nav-link" href="/RoomList">Properties</a></li>
+                <li className="nav-item">
+                <a className="nav-link" href="/service-providers">Services</a>
+              </li>
                 <li className="nav-item"><a className="nav-link" href="/Userroom">About Us</a></li>
-                <li className="nav-item"><a className="nav-link" href="/maintenance">Blogs</a></li>
                 <li className="nav-item dropdown">
                   <a
                     className="nav-link dropdown-toggle"
@@ -256,6 +258,8 @@ const handleGoToMessaging = (roomId, buyerName) => {
                     <li><hr className="dropdown-divider" /></li>
                     <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
                     <li><hr className="dropdown-divider" /></li>
+                    <li><a className="dropdown-item" href="/saved-providers">Bookmarks</a></li>
+                  <li><hr className="dropdown-divider" /></li>
                     <li>
                       {sessionStorage.getItem("token") && (
                         <button className="dropdown-item" onClick={handleLogout}><strong>Logout</strong></button>

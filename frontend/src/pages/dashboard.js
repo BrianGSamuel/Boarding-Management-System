@@ -196,6 +196,9 @@ function HomePage() {
                 <a className="nav-link" href="/RoomList">Properties</a>
               </li>
               <li className="nav-item">
+                <a className="nav-link" href="/service-providers">Services</a>
+              </li>
+              <li className="nav-item">
                 <a className="nav-link" href="/AboutUS">About Us</a>
               </li>
               
@@ -224,6 +227,8 @@ function HomePage() {
                   <li><a className="dropdown-item" href="/Ticket">Add a Ticket</a></li>
                   <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
+                  <li><hr className="dropdown-divider" /></li>
+                  <li><a className="dropdown-item" href="/saved-providers">Bookmarks</a></li>
                   <li><hr className="dropdown-divider" /></li>
                   <li>
                   {sessionStorage.getItem("token") && (
@@ -315,7 +320,7 @@ function HomePage() {
                   </div>
           
                   <button className="filter-search-btn" onClick={applyFilters}>
-                    <img src={searchIcon} alt="Search" className="search-icon" />
+                    Search
                   </button>
             </div>
         

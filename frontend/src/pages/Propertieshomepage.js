@@ -138,6 +138,9 @@ function RoomList() {
                 <a className="nav-link" href="/Properties">Properties</a>
               </li>
               <li className="nav-item">
+                <a className="nav-link" href="/service-providers">Services</a>
+              </li>
+              <li className="nav-item">
                 <a className="nav-link" href="/HAboutUs">About Us</a>
               </li>
               
@@ -224,7 +227,7 @@ function RoomList() {
                         </div>
                 
                         <button className="filter-search-btn" onClick={applyFilters}>
-                          <img src={searchIcon} alt="Search" className="search-icon" />
+                          Search
                         </button>
                   </div>
               
