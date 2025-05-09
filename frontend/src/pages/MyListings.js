@@ -515,7 +515,7 @@ const generatePDF = (room) => {
           title="Edit Room"
           disabled={room.isVerified} // Disable button when isBookedconfirm is true
         >
-          <Pencil size={20} /> {/* Edit Icon */}
+          <Pencil size={20} /> Edit{/* Edit Icon */}
         </button>
 
 
@@ -524,7 +524,7 @@ const generatePDF = (room) => {
           onClick={() => deleteRoom(room._id)}
           title="Delete Room"
           >
-            <Trash2 size={20} /> {/* Bin Icon */}
+            <Trash2 size={20} /> Delete Room{/* Bin Icon */}
           </button>
          
           
@@ -532,7 +532,7 @@ const generatePDF = (room) => {
         <button className="btn " onClick={() => handleRepostRoom(room._id)}
           disabled={!room.isBooked}
         >
-          <RefreshCcw size={20} />  
+          <RefreshCcw size={20} />  repost
         </button>
 
         {room.isBooked && (
