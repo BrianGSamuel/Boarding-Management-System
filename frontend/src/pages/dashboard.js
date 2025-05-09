@@ -320,7 +320,7 @@ function HomePage() {
                   </div>
           
                   <button className="filter-search-btn" onClick={applyFilters}>
-                    <img src={searchIcon} alt="Search" className="search-icon" />
+                    Search
                   </button>
             </div>
         
@@ -434,68 +434,196 @@ function HomePage() {
       
 
 
-        {/*FAQ section */}
-        <div className={styles['faq-section']}> 
-          <section id="faq">
-            <div className="FAQ-container">
-              <h2 className={'faq-heading'}>Frequently Asked Questions</h2>
-                <div className="accordion">
-                  <div className={`accordion-item mb-3`}> {/* Add bottom margin to each accordion item */}
-                    <h2 className="accordion-header" id="questionOne">
-                      <button 
-                        className="accordion-button" 
-                        type="button" 
-                        data-bs-toggle="collapse" 
-                        data-bs-target="#collapseOne" 
-                        aria-expanded="true" 
-                        aria-controls="collapseOne"
-                        >
-                         How do I book a room?
-                      </button>
-                    </h2>
-
-                    <div 
-                      id="collapseOne" 
-                      className="accordion-collapse collapse show" 
-                      aria-labelledby="questionOne" 
-                      data-bs-parent="#faqAccordion"
-                    >
-                      <div className="accordion-body">
-                      You can book a room by clicking the "Book a Room" button and filling out your details.
-                      </div>
-                    </div>
-                  </div>
-
-
-                  <div className={`accordion-item mb-3`}> {/* Add bottom margin to each accordion item */}
-                    <h2 className="accordion-header" id="questionTwo">
-                      <button 
-                        className="accordion-button" 
-                        type="button" 
-                        data-bs-toggle="collapse" 
-                        data-bs-target="#collapseTwo" 
-                        aria-expanded="false" 
-                        aria-controls="collapseTwo"
-                      >
-                        Question 2?
-                      </button>
-                    </h2>
-                    <div 
-                      id="collapseTwo" 
-                      className="accordion-collapse collapse" 
-                      aria-labelledby="questionTwo" 
-                      data-bs-parent="#faqAccordion"
-                      >
-                      <div className="accordion-body">
-                        Answer to question 2.
-                      </div>
-                    </div>
-                  </div>
-                  {/* Add more accordion items as needed */}
-                </div>
-              </div>
-            </section>
+        {/* FAQ section */}
+<div className={styles['faq-section']}> 
+  <section id="faq">
+    <div className="FAQ-container">
+      <h2 className={'faq-heading'}>Frequently Asked Questions</h2>
+      <div className="accordion" id="faqAccordion">
+        
+        {/* Existing FAQs */}
+        <div className="accordion-item mb-3">
+          <h2 className="accordion-header" id="questionOne">
+            <button 
+              className="accordion-button" 
+              type="button" 
+              data-bs-toggle="collapse" 
+              data-bs-target="#collapseOne" 
+              aria-expanded="true" 
+              aria-controls="collapseOne"
+            >
+              How do I book a room?
+            </button>
+          </h2>
+          <div 
+            id="collapseOne" 
+            className="accordion-collapse collapse show" 
+            aria-labelledby="questionOne" 
+            data-bs-parent="#faqAccordion"
+          >
+            <div className="accordion-body">
+              You can book a room by browsing through the rooms on the dashboard using the filter options and clicking the "Book" button on your preferred room.
+            </div>
           </div>
+        </div>
+
+        <div className="accordion-item mb-3">
+  <h2 className="accordion-header" id="questionTwo">
+    <button 
+      className="accordion-button collapsed" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#collapseTwo" 
+      aria-expanded="false" 
+      aria-controls="collapseTwo"
+    >
+      Can I contact the landlord before booking a room?
+    </button>
+  </h2>
+  <div 
+    id="collapseTwo" 
+    className="accordion-collapse collapse" 
+    aria-labelledby="questionTwo" 
+    data-bs-parent="#faqAccordion"
+  >
+    <div className="accordion-body">
+      Yes, once you select a room, you can use the in-app messaging system to communicate with the landlord and clarify any questions before finalizing your booking.
+    </div>
+  </div>
+</div>
+
+
+        {/* New FAQs */}
+        <div className="accordion-item mb-3">
+          <h2 className="accordion-header" id="questionThree">
+            <button 
+              className="accordion-button collapsed" 
+              type="button" 
+              data-bs-toggle="collapse" 
+              data-bs-target="#collapseThree" 
+              aria-expanded="false" 
+              aria-controls="collapseThree"
+            >
+              How can I find rooms that match my preferences?
+            </button>
+          </h2>
+          <div 
+            id="collapseThree" 
+            className="accordion-collapse collapse" 
+            aria-labelledby="questionThree" 
+            data-bs-parent="#faqAccordion"
+          >
+            <div className="accordion-body">
+              Use the filter options provided on the dashboard to search for rooms based on location, price, number of beds, and other preferences.
+            </div>
+          </div>
+        </div>
+
+        <div className="accordion-item mb-3">
+          <h2 className="accordion-header" id="questionFour">
+            <button 
+              className="accordion-button collapsed" 
+              type="button" 
+              data-bs-toggle="collapse" 
+              data-bs-target="#collapseFour" 
+              aria-expanded="false" 
+              aria-controls="collapseFour"
+            >
+              How can I get help if I face an issue?
+            </button>
+          </h2>
+          <div 
+            id="collapseFour" 
+            className="accordion-collapse collapse" 
+            aria-labelledby="questionFour" 
+            data-bs-parent="#faqAccordion"
+          >
+            <div className="accordion-body">
+              You can raise a support ticket through your dashboard. Our service provider team will respond to your issue as soon as possible.
+            </div>
+          </div>
+        </div>
+
+        <div className="accordion-item mb-3">
+          <h2 className="accordion-header" id="questionFive">
+            <button 
+              className="accordion-button collapsed" 
+              type="button" 
+              data-bs-toggle="collapse" 
+              data-bs-target="#collapseFive" 
+              aria-expanded="false" 
+              aria-controls="collapseFive"
+            >
+              How do landlords add their rooms to the platform?
+            </button>
+          </h2>
+          <div 
+            id="collapseFive" 
+            className="accordion-collapse collapse" 
+            aria-labelledby="questionFive" 
+            data-bs-parent="#faqAccordion"
+          >
+            <div className="accordion-body">
+              Landlords can add rooms by logging into their account and navigating to the "Add Room" page from the main menu. They can then fill in room details and submit for verification.
+            </div>
+          </div>
+        </div>
+
+        <div className="accordion-item mb-3">
+          <h2 className="accordion-header" id="questionSix">
+            <button 
+              className="accordion-button collapsed" 
+              type="button" 
+              data-bs-toggle="collapse" 
+              data-bs-target="#collapseSix" 
+              aria-expanded="false" 
+              aria-controls="collapseSix"
+            >
+              Who verifies the room listings?
+            </button>
+          </h2>
+          <div 
+            id="collapseSix" 
+            className="accordion-collapse collapse" 
+            aria-labelledby="questionSix" 
+            data-bs-parent="#faqAccordion"
+          >
+            <div className="accordion-body">
+              Our admin team reviews each room listing submitted by landlords to ensure accuracy and quality before publishing them on the platform.
+            </div>
+          </div>
+        </div>
+
+        <div className="accordion-item mb-3">
+          <h2 className="accordion-header" id="questionSeven">
+            <button 
+              className="accordion-button collapsed" 
+              type="button" 
+              data-bs-toggle="collapse" 
+              data-bs-target="#collapseSeven" 
+              aria-expanded="false" 
+              aria-controls="collapseSeven"
+            >
+              What happens after I book a room?
+            </button>
+          </h2>
+          <div 
+            id="collapseSeven" 
+            className="accordion-collapse collapse" 
+            aria-labelledby="questionSeven" 
+            data-bs-parent="#faqAccordion"
+          >
+            <div className="accordion-body">
+              Once you book a room, the booking will be confirmed upon payment and you will receive a confirmation message. The landlord will also be notified about your booking.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
 
 {/* Newsletter Section */}
 <div className="newsletter-container d-flex justify-content-center align-items-center vh-100">
