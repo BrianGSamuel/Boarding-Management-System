@@ -34,7 +34,7 @@ const navigate = useNavigate();
   };
 
   // Placeholder for current logged-in user (replace with your auth logic)
-  const currentUser = "user123"; // Example user ID
+  const currentUser = "Nishika Minuri"; // Example user ID
 
   // State for reviews and form inputs
   const [reviews, setReviews] = useState([]);
