@@ -146,7 +146,7 @@ function LoggedCustomer() {
             <button 
               className="btn  me-1" 
               onClick={handleLogout}
-              title="Edit Room"
+              title="Logout"
               >
               <LogOut size={25} /> {/* Edit Icon */}
             </button>

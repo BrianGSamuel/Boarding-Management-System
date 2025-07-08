@@ -78,6 +78,7 @@ function AboutUs() {
                   <li><a className="dropdown-item" href="/MyListings">My Listings</a></li>
                   <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
+                  <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="/saved-providers">Bookmarks</a></li>
                   <li><hr className="dropdown-divider" /></li>
                   {sessionStorage.getItem('token') && (
