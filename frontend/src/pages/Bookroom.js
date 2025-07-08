@@ -114,18 +114,20 @@ function BookRoomPage() {
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="profileDropdown">
                   <li><a className="dropdown-item" href="/profile">View Profile</a></li>
+                  <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="/MyRoom">My Room</a></li>
+                  <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="/MyListings">My Listings</a></li>
+                  <li><hr className="dropdown-divider" /></li>
+                  <li><a className="dropdown-item" href="/register-service-provider">Service Provider</a></li>
+                  <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="/saved-providers">Bookmarks</a></li>
                   <li><hr className="dropdown-divider" /></li>
-                  <li><hr className="dropdown-divider" /></li>
-                  <li>
-                  {sessionStorage.getItem("token") && (
-                  <li className="nav-item">
-                    <button className="dropdown-item" onClick={handleLogout}><strong>Logout</strong></button>
-                  </li>
-                )}
-                  </li>
+                  {sessionStorage.getItem('token') && (
+                    <li>
+                      <button className="dropdown-item" onClick={handleLogout}><strong>Logout</strong></button>
+                    </li>
+                  )}
                 </ul>
               </li>
             </ul>
